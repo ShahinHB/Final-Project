@@ -1,0 +1,66 @@
+$primaryFontColor: #e5ebed;
+$secondaryFontColor: rgb(134,134,134);
+
+#about{
+    color: $secondaryFontColor;
+    .container{
+        .row{
+            justify-content: center;
+            .col-10{
+                background-color: white;
+                text-align: left;
+                padding: 90px 70px;
+                .city{
+                    margin-bottom: 100px;
+                    .row{
+                        .col-4{
+                            .title{
+                                font: normal normal normal 28px raleway,sans-serif;
+                                h2{
+                                    font-size: 28px !important;
+                                }
+                            }
+                        }
+                        .col-8{
+                            .content{
+                                p{
+                                    font-size: 15px;
+                                }
+                                a{
+                                    display: block;
+                                    text-decoration: none;
+                                    margin-top: 50px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .games{
+                    margin-bottom: 80px;
+                    .row{
+                        .col-4{
+                            .title{
+                                font: normal normal normal 28px raleway,sans-serif;
+                                h2{
+                                    font-size: 28px !important;
+                                }
+                            }
+                        }
+                        .col-8{
+                            .content{
+                                p{
+                                    font-size: 15px;
+                                }
+                                a{
+                                    display: block;
+                                    margin-top: 50px;
+                                    text-decoration: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,225 @@
+$primaryFontColor: #e5ebed;
+$secondaryFontColor: rgb(134,134,134);
+
+
+#service-about{
+    .container{
+        .row{
+            justify-content: center;
+            .col-10{
+                background-color: white;
+                text-align: center;
+                padding: 35px 0px 0px 0px;
+                
+                form{
+                    input{
+                        margin-right: 10px;
+                        border: 1px solid $primaryFontColor;
+                    }
+                    .date{
+                        padding: 5px;
+                        width: 25%;
+                    }
+                    .count{
+                        padding: 5px;
+                        width: 10%;
+                    }
+                    button{
+                        padding: 5px 30px;
+                        width: 20%;
+                        border: none;
+                        background-color: #6BA3A2;
+                        color: white;
+                    }
+                }
+                >h1{
+                    font-size: 28px;
+                    color: $secondaryFontColor;
+                    margin-top: 70px;
+                }
+                .seperator{
+                    display: flex;
+                    justify-content: center;
+                    padding: 30px 0;
+                    div{
+                        border: 1px solid orange;
+                        width: 40px;
+                    }
+                }
+                p{
+                    width: 80%;
+                    margin: 0 auto;
+                    font-size: 15px;
+                    margin-bottom: 50px;
+                }
+                .apartment{
+                    .title{
+                        font-size: 28px;
+                        background-color: #6BA3A2;
+                        text-align: center;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        h1{
+                            font-size: 28px;
+                            font-weight: normal;
+                            color: white;
+                        }
+                    }
+                    .container{
+                        padding: 0px;
+                        .row{
+                            width: 100%;
+                            margin: 0px;
+                            .col-4{
+                                padding: 0px;
+                                max-width: 100%;
+                                
+                                img{
+                                    width: 100%;
+                                }
+                            }
+                            .col-8{
+                                padding: 0px;
+                                display: flex;
+                                justify-content: space-around;
+                                img{
+                                    width: 100%;
+                                }
+                                .content{
+                                    text-align: left;
+                                    width: 480px;
+                                    padding-top: 70px;
+                                    p{
+                                        width: 100%;
+                                        margin: 0px;
+                                        font: normal normal normal 15px/1.4em raleway,sans-serif;
+                                        color: $secondaryFontColor;
+                                        margin-bottom: 60px;
+                                    }
+                                    a{
+                                        text-decoration: none;
+                                        text-transform: uppercase;
+                                        color: $secondaryFontColor;
+                                        font-size: 15px;
+                                        &:hover{
+                                            color: black;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                &:last-child{
+                    padding-top: 80px;
+                    .location{
+                        width: 100%;
+                        .container{
+                            padding: 0px;
+                            .row{
+                                width: 100%;
+                                margin: 0px;
+                                .col-8{
+                                    padding: 0px;
+                                    .image{
+                                        max-width: 100%;
+                                        img{
+                                            width: 100%;
+                                        }
+                                    }
+                                }
+                                .title{
+                                    font-size: 28px;
+                                    background-color: #6BA3A2;
+                                    text-align: center;
+                                    display: flex;
+                                    flex-direction: column;
+                                    justify-content: center;
+                                    h1{
+                                        font-size: 28px;
+                                        font-weight: normal;
+                                        color: white;
+                                    }
+
+                                }
+                                .col-12{
+                                    padding: 0px;
+                                    .map{
+                                        padding: 68px 0px;
+                                        width: 100%;
+                                        text-align: center;
+                                        p{
+                                            color: $secondaryFontColor;
+                                            width: 60%;
+                                            margin-bottom: 0px;
+                                        }
+                                        a{
+                                            display: block;
+                                            margin-top: 20px;
+                                            text-transform: uppercase;
+                                            text-decoration: none;
+                                            color: $secondaryFontColor;
+                                            font: normal normal normal 15px/1.4em raleway,sans-serif;
+                                            &:hover{
+                                                color: black;
+                                            }
+                                        }
+                                    }
+                                }
+                                .feedback{
+                                    padding: 0px;
+                                    color: white;
+                                    .container{
+                                        .row{
+                                            width: 100%;
+                                            margin: 0px;
+                                            .col-4{
+                                                padding: 0px;
+                                                .image{
+                                                    max-width: 100%;
+
+                                                    img{
+                                                        width: 100%;
+                                                    }
+                                                }
+                                            }
+                                            .col-8{
+                                                background-color: #6BA3A2;
+                                                display: flex;
+                                                flex-direction: column;
+                                                justify-content: center;
+                                                .content{
+                                                    width: 80%;
+                                                    text-align: left;
+                                                    margin: 0 auto;
+                                                    h1{
+                                                        margin: 0 auto;
+                                                    }
+                                                    .seperator{
+                                                        display: flex;
+                                                        justify-content: left;
+                                                        padding: 27px 0;
+                                                        div{
+                                                            border: 1px solid orange;
+                                                            width: 40px;
+                                                        }
+                                                    }
+                                                    p{
+                                                        margin: 0px;
+                                                        width: 100%;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}
