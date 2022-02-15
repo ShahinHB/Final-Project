@@ -43,10 +43,10 @@
         </div>
     </header>
 
-    <div class="container"> 
-        <main role="main" class="pb-3"> 
-            @RenderBody() 
-        </main> 
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
     </div>
 
     <footer>
@@ -106,8 +106,10 @@
                                     <div>
                                     </div>
                                 </div>
-                                <input type="email" placeholder="Enter your email here">
-                                <button type="submit">Subscribe Now</button>
+                                <form asp-area="Admin" asp-controller="Sub" asp-action="Create" method="post">
+                                    <input type="email" placeholder="Enter your email here">
+                                    <button type="submit">Subscribe Now</button>
+                                </form>
                             </div>
                         </div>
                     </div>

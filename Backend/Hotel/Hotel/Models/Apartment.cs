@@ -20,10 +20,10 @@ namespace Hotel.Models
 
         public string Info { get; set; }
 
-        List<ApartmentToAmenity> ApartmentToAmenities { get; set; }
+        public List<ApartmentToAmenity> ApartmentToAmenities { get; set; }
 
-        List<ApartmentImage> ApartmentImages { get; set; }
+        public List<ApartmentImage> ApartmentImages { get; set; }
 
-        List<Reservation> Reservations { get; set; }
+        public List<Reservation> Reservations { get; set; }
     }
 }
