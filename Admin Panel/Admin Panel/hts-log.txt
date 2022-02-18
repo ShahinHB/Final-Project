@@ -1,14 +1,32 @@
-HTTrack3.49-2+htsswf+htsjava launched on Thu, 10 Feb 2022 23:01:16 at https://www.cashearningtips.com/side-menu-light-file-manager.html +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
-(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://www.cashearningtips.com/side-menu-light-file-manager.html -O1 "C:\Users\Shahin\Desktop\Final Project\Admin Panel\Admin Panel" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+HTTrack3.49-2+htsswf+htsjava launched on Fri, 18 Feb 2022 12:08:43 at https://www.einfosoft.com/templates/admin/spice/source/index.html +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://www.einfosoft.com/templates/admin/spice/source/index.html -O1 "C:\Users\Shahin\Desktop\Final Project\Admin Panel\Admin Panel" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
 
 Information, Warnings and Errors reported for this mirror:
 note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
 	such as username/password authentication for websites mirrored in this project
 	do not share these files/folders if you want these information to remain private
 
-23:02:29	Error: 	"Not Found" (404) at link https://www.cashearningtips.com/login-light-login.html (from https://www.cashearningtips.com/side-menu-light-file-manager.html)
-23:02:29	Error: 	"Not Found" (404) at link https://www.cashearningtips.com/login-light-register.html (from https://www.cashearningtips.com/side-menu-light-file-manager.html)
-23:02:29	Error: 	"Not Found" (404) at link https://www.cashearningtips.com/main-light-error-page.html (from https://www.cashearningtips.com/side-menu-light-file-manager.html)
+12:11:00	Error: 	"Not Found" (404) at link https://www.einfosoft.com/templates/admin/spice/source/assets/img/datatable-row-openclose.png (from https://www.einfosoft.com/templates/admin/spice/source/assets/css/plugins.min.css)
+12:11:09	Error: 	"Not Found" (404) at link https://www.einfosoft.com/templates/admin/spice/source/staff_profile.html (from https://www.einfosoft.com/templates/admin/spice/source/all_staffs.html)
+12:11:09	Warning: 	Retry after error -4 (No data (connection closed)) at link https://www.einfosoft.com/templates/admin/spice/source/assets/img/user/usrbig9.jpg (from https://www.einfosoft.com/templates/admin/spice/source/all_staffs.html)
+12:11:10	Error: 	"Not Found" (404) at link https://www.einfosoft.com/templates/admin/spice/source/icons.html (from https://www.einfosoft.com/templates/admin/spice/source/layout_full_width.html)
+12:11:24	Error: 	"Not Found" (404) at link https://www.einfosoft.com/templates/admin/spice/source/popper.js (from https://www.einfosoft.com/templates/admin/spice/source/assets/plugins/bootstrap/js/bootstrap.min.js)
+12:11:24	Error: 	"Not Found" (404) at link https://www.einfosoft.com/templates/admin/spice/source/img/ (from https://www.einfosoft.com/templates/admin/spice/source/assets/js/app.js)
+12:11:24	Error: 	"Not Found" (404) at link https://www.einfosoft.com/templates/admin/spice/source/global/plugins/ (from https://www.einfosoft.com/templates/admin/spice/source/assets/js/app.js)
+12:11:24	Error: 	"Not Found" (404) at link https://www.einfosoft.com/templates/admin/spice/source/css/ (from https://www.einfosoft.com/templates/admin/spice/source/assets/js/app.js)
+12:11:24	Error: 	"Not Found" (404) at link https://www.einfosoft.com/templates/admin/spice/source/isDSTShifted is deprecated. See http://momentjs.com/guides/ (from https://www.einfosoft.com/templates/admin/spice/source/assets/plugins/chart-js/Chart.bundle.js)
+12:11:24	Error: 	"Not Found" (404) at link https://www.einfosoft.com/templates/admin/spice/source/assets/plugins/jquery-file-upload/img/error.png (from https://www.einfosoft.com/templates/admin/spice/source/assets/plugins/jquery-file-upload/blueimp-gallery/blueimp-gallery.min.css)
+12:11:24	Error: 	"Not Found" (404) at link https://www.einfosoft.com/templates/admin/spice/source/assets/plugins/jquery-file-upload/img/play-pause.png (from https://www.einfosoft.com/templates/admin/spice/source/assets/plugins/jquery-file-upload/blueimp-gallery/blueimp-gallery.min.css)
+12:11:24	Error: 	"Not Found" (404) at link https://www.einfosoft.com/templates/admin/spice/source/assets/plugins/jquery-file-upload/img/error.svg (from https://www.einfosoft.com/templates/admin/spice/source/assets/plugins/jquery-file-upload/blueimp-gallery/blueimp-gallery.min.css)
+12:11:24	Error: 	"Not Found" (404) at link https://www.einfosoft.com/templates/admin/spice/source/assets/plugins/jquery-file-upload/img/play-pause.svg (from https://www.einfosoft.com/templates/admin/spice/source/assets/plugins/jquery-file-upload/blueimp-gallery/blueimp-gallery.min.css)
+12:11:24	Error: 	"Not Found" (404) at link https://www.einfosoft.com/templates/admin/spice/source/assets/plugins/jquery-file-upload/img/video-play.png (from https://www.einfosoft.com/templates/admin/spice/source/assets/plugins/jquery-file-upload/blueimp-gallery/blueimp-gallery.min.css)
+12:11:24	Error: 	"Not Found" (404) at link https://www.einfosoft.com/templates/admin/spice/source/assets/plugins/jquery-file-upload/img/video-play.svg (from https://www.einfosoft.com/templates/admin/spice/source/assets/plugins/jquery-file-upload/blueimp-gallery/blueimp-gallery.min.css)
+12:11:24	Error: 	"Not Found" (404) at link https://www.einfosoft.com/templates/admin/spice/source/clipboard.png (from https://www.einfosoft.com/templates/admin/spice/source/assets/plugins/summernote/summernote.min.js)
+12:11:24	Error: 	"Not Found" (404) at link https://www.einfosoft.com/templates/admin/spice/source/image/ (from https://www.einfosoft.com/templates/admin/spice/source/assets/plugins/summernote/summernote.min.js)
+12:11:24	Error: 	"Not Found" (404) at link https://www.einfosoft.com/templates/admin/spice/source/assets/plugins/owl-carousel/grabbing.png (from https://www.einfosoft.com/templates/admin/spice/source/assets/plugins/owl-carousel/owl.carousel.css)
+12:11:24	Error: 	"Not Found" (404) at link https://www.einfosoft.com/templates/admin/spice/source/assets/plugins/owl-carousel/AjaxLoader.gif (from https://www.einfosoft.com/templates/admin/spice/source/assets/plugins/owl-carousel/owl.theme.css)
+12:11:24	Error: 	"Not Found" (404) at link https://www.einfosoft.com/templates/admin/spice/source/^image: (from https://www.einfosoft.com/templates/admin/spice/source/assets/plugins/echarts/echarts.js)
+12:11:24	Error: 	"Not Found" (404) at link https://preview.w3layouts.com/demos/flat_pricing_tables_design/web/images/filter-bg.png (from https://www.einfosoft.com/templates/admin/spice/source/assets/css/pages/pricing.css)
 
-HTTrack Website Copier/3.49-2 mirror complete in 1 minutes 31 seconds : 215 links scanned, 211 files written (23503067 bytes overall) [3626708 bytes received at 39853 bytes/sec], 23138093 bytes transferred using HTTP compression in 167 files, ratio 13%, 21.5 requests per connection
-(3 errors, 0 warnings, 0 messages)
+HTTrack Website Copier/3.49-2 mirror complete in 2 minutes 41 seconds : 359 links scanned, 337 files written (17641968 bytes overall) [8578982 bytes received at 53285 bytes/sec], 11262339 bytes transferred using HTTP compression in 227 files, ratio 17%, 17.0 requests per connection
+(20 errors, 1 warnings, 0 messages)

@@ -182,3 +182,7 @@ C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.
 C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\About\CreateLocation.cshtml.g.cs
 C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\About\UpdateLocation.cshtml.g.cs
 C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\About\CreateFeedback.cshtml.g.cs
+C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\About\UpdateFeedback.cshtml.g.cs
+C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Page\Index.cshtml.g.cs
+C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Page\Create.cshtml.g.cs
+C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Page\Update.cshtml.g.cs
