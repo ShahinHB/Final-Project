@@ -1,4 +1,6 @@
-﻿using Hotel.Models;
+﻿using Hotel.Data;
+using Hotel.Models;
+using Hotel.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,27 +13,28 @@ namespace Hotel.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly AppDbContext _context;
+
+        public HomeController(AppDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            return View();
+            VmHome model = new VmHome
+            {
+                Sub = _context.Subs.FirstOrDefault(),
+                Socials = _context.Socials.ToList(),
+                Setting = _context.Settings.FirstOrDefault(),
+                AboutApartment = _context.Aboutapartments.FirstOrDefault(),
+                Location = _context.Locations.FirstOrDefault(),
+                Feedback = _context.Feedbacks.FirstOrDefault()
+            };
+                     
+            return View(model);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

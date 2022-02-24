@@ -19,11 +19,19 @@ namespace Hotel.Models
         public double Price { get; set; }
 
         public string Info { get; set; }
+        public int Limit { get; set; }
+        public string BedCount { get; set; }
+        public string Size { get; set; }
 
         public List<ApartmentToAmenity> ApartmentToAmenities { get; set; }
 
         public List<ApartmentImage> ApartmentImages { get; set; }
 
         public List<Reservation> Reservations { get; set; }
+
+        [NotMapped]
+        public List<int> ApartmentToAmenityId { get; set; }
+
+       
     }
 }

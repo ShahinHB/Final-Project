@@ -1,5 +1,6 @@
 ﻿using Hotel.Data;
 using Hotel.Models;
+using Hotel.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -18,8 +19,15 @@ namespace Hotel.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            VmContact model = new VmContact
+            {
+                Socials = _context.Socials.ToList(),
+                Setting = _context.Settings.FirstOrDefault(),
+            };
+
+            return View(model);
         }
+
 
         [HttpPost]
         public IActionResult CreateMessage(Message message)
@@ -28,9 +36,8 @@ namespace Hotel.Controllers
             {
                 _context.Messages.Add(message);
                 _context.SaveChanges();
-                return View();
             }
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }

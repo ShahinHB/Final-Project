@@ -1,0 +1,32 @@
+﻿@model VmAccount
+@{
+    ViewData["Title"] = "UpdateUser";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 mt-3">
+            <form asp-controller="User" asp-action="UpdateUser" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="mb-3">
+                    <h1>@Model.User.UserName</h1>
+                    <input asp-for="@Model.User.UserName" class="form-control" hidden>
+
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.User.RoleId" class="form-label">Vəzifə</label>
+                    <select class="form-control" aria-label="Default select example" asp-for="@Model.User.RoleId" asp-items="@(new SelectList(ViewBag.Roles,"Id", "Name"))">
+                        <option selected disabled>Select role</option>
+                    </select>
+                    <span asp-validation-for="@Model.User.RoleId"></span>
+                </div>
+                <input asp-for="User.Id" hidden />
+
+                <button type="submit" class="btn btn-primary btn-user btn-block">
+                    Update
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

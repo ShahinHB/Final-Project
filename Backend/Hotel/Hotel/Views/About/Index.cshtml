@@ -1,4 +1,5 @@
-﻿
+﻿@model VmAbout
+
 @{
     ViewData["Title"] = "Index";
 }
@@ -16,19 +17,30 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="title">
-                                <h2>
-                                    The <br> Marvelous <br> City
-                                </h2>
+                                @if (Model.AboutCity != null)
+                                {
+                                    <h2>
+                                        @Model.AboutCity.Title
+                                    </h2>
+                                }
+                                else
+                                {
+                                    <h2> Soon </h2>
+                                }
                             </div>
                         </div>
                         <div class="col-8">
                             <div class="content">
-                                <p>
-                                    Create memories of a lifetime in one of the most beautiful
-                                    cities in the world - Rio de Janeiro. Relax on gorgeous white
-                                    sandy beaches, explore a cultural hub of art and entertainment,
-                                    or check out the many famous landmarks around the city.
-                                </p>
+                                @if (Model.AboutCity != null)
+                                {
+                                    <p>
+                                        @Model.AboutCity.Content
+                                    </p>
+                                }
+                                else
+                                {
+                                    <p> Soon </p>
+                                }
                                 <a href="#">View Map</a>
                             </div>
 
@@ -39,19 +51,33 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="title">
-                                <h2>
-                                    The <br> Marvelous <br> City
-                                </h2>
+                                @if (Model.AboutGames != null)
+                                {
+                                    <h2>
+                                        @Model.AboutGames.Title
+                                    </h2>
+                                }
+                                else
+                                {
+                                    <h2> Soon </h2>
+                                }
+
                             </div>
                         </div>
                         <div class="col-8">
                             <div class="content">
-                                <p>
-                                    Create memories of a lifetime in one of the most beautiful
-                                    cities in the world - <b>Rio de Janeiro</b>. Relax on gorgeous white
-                                    sandy beaches, explore a cultural hub of art and entertainment,
-                                    or check out the many famous landmarks around the city.
-                                </p>
+                                @if (Model.AboutGames != null)
+                                {
+                                    <p>
+                                        @Model.AboutGames.Content
+                                    </p>
+                                }
+                                else
+                                {
+                                    <p> Soon </p>
+                                }
+
+                              
                                 <a href="#">View Map</a>
                             </div>
 

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model VmContact   
+@{
     ViewData["Title"] = "Index";
 }
 
@@ -22,9 +23,12 @@
                         </div>
                         <div class="col-8">
                             <div class="content">
-                                <input type="text" placeholder="Name">
-                                <input type="email" placeholder="Email">
-                                <textarea rows="10" placeholder="Type your message here..."></textarea>
+                                <form asp-area="" asp-controller="Contact" asp-action="CreateMessage" method="post">
+                                    <input asp-for="@Model.Message.Name" placeholder="Name">
+                                    <input asp-for="@Model.Message.Email" type="email" placeholder="Email">
+                                    <textarea asp-for="@Model.Message.Content" rows="10" placeholder="Type your message here..."></textarea>
+                                    <button type="submit">Send Message</button>
+                                </form>
                             </div>
                         </div>
                     </div>

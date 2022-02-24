@@ -1,5 +1,6 @@
 ﻿using Hotel.Data;
 using Hotel.Models;
+using Hotel.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -25,29 +26,33 @@ namespace Hotel.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            VmAdminPageList model = new VmAdminPageList();
+            model.Pages = _context.Pages.ToList();
+            return View(model);
         }
         public IActionResult Create()
         {
             return View();
         }
 
-        public IActionResult Create(Page model)
+        [HttpPost]
+        public IActionResult Create(VmAdminPage model)
         {
             if (ModelState.IsValid)
             {
-                if (model.ImageFile.ContentType == "image/jpeg" || model.ImageFile.ContentType == "image/png")
+                
+                if (model.Page.ImageFile.ContentType == "image/jpeg" || model.Page.ImageFile.ContentType == "image/png")
                 {
-                    string fileName = model.Title;
+                    string fileName = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss-fffffff") + model.Page.ImageFile.FileName;
                     string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", fileName);
 
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
-                        model.ImageFile.CopyTo(stream);
+                        model.Page.ImageFile.CopyTo(stream);
                     }
-
-                    model.ImageName = fileName;
-                    _context.Pages.Add(model);
+                    
+                    model.Page.ImageName = fileName;
+                    _context.Pages.Add(model.Page);
                     _context.SaveChanges();
 
 

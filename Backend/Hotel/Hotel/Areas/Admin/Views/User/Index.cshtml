@@ -1,0 +1,56 @@
+﻿@model VmAdminUserList
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <a class="btn btn-primary mb-3" asp-controller="User" asp-action="CreateUser">Add User</a>
+        </div>
+        <hr />
+
+        <div class="col-lg-12 mt-3">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">UserName</th>
+                        <th scope="col">Duty</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ int i = 0;
+                        foreach (var item in Model.Users)
+                        {
+                            i++;
+                            <tr>
+                                <th scope="row">@i</th>
+                                <td>@item.UserName</td>
+                                <td>
+                                    @{
+                                        var role = "";
+                                        var userRole = Model.UserRoles.FirstOrDefault(u => u.UserId == item.Id);
+
+                                        if (userRole != null)
+                                        {
+                                            role = Model.Roles.FirstOrDefault(r => r.Id == userRole.RoleId).Name;
+                                        }
+                                    }
+
+                                    @role
+                                </td>
+                                <td>
+                                    <a class="btn btn-success" asp-controller="User" asp-action="UpdateUser" asp-route-id="@item.Id">Update</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+﻿@model VmAccount
+@{
+    ViewData["Title"] = "CreateUser";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <form asp-controller="User" asp-action="CreateUser" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="mb-3">
+                    <label asp-for="@Model.User.UserName" class="form-label">Adı</label>
+                    <input class="form-control" asp-for="@Model.User.UserName">
+                    <span asp-validation-for="@Model.User.UserName" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.Password" class="form-label">Şifrəsi</label>
+                    <input class="form-control" asp-for="@Model.Password">
+                    <span asp-validation-for="@Model.Password" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.User.RoleId" class="form-label">Vəzifə</label>
+                    <select class="form-control" aria-label="Default select example" asp-for="@Model.User.RoleId" asp-items="@(new SelectList(ViewBag.Roles,"Id", "Name"))">
+                        <option selected disabled>Select role</option>
+                    </select>
+                    <span asp-validation-for="@Model.User.RoleId"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Create</button>
+                <a asp-controller="User" asp-action="Index">Back to list</a>
+            </form>
+        </div>
+    </div>
+</div>

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hotel.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220209160102_init")]
-    partial class init
+    [Migration("20220220153309_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -100,11 +100,20 @@ namespace Hotel.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("BedCount")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Info")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Limit")
+                        .HasColumnType("int");
+
                     b.Property<double>("Price")
                         .HasColumnType("float");
+
+                    b.Property<string>("Size")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Subtitle")
                         .HasColumnType("nvarchar(max)");
@@ -223,10 +232,10 @@ namespace Hotel.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Content")
+                    b.Property<string>("ImageName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageName")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Subtitle")
@@ -568,7 +577,7 @@ namespace Hotel.Migrations
             modelBuilder.Entity("Hotel.Models.ApartmentImage", b =>
                 {
                     b.HasOne("Hotel.Models.Apartment", "Apartment")
-                        .WithMany()
+                        .WithMany("ApartmentImages")
                         .HasForeignKey("ApartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -585,7 +594,7 @@ namespace Hotel.Migrations
                         .IsRequired();
 
                     b.HasOne("Hotel.Models.Apartment", "Apartment")
-                        .WithMany()
+                        .WithMany("ApartmentToAmenities")
                         .HasForeignKey("ApartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -598,7 +607,7 @@ namespace Hotel.Migrations
             modelBuilder.Entity("Hotel.Models.Reservation", b =>
                 {
                     b.HasOne("Hotel.Models.Apartment", "Apartment")
-                        .WithMany()
+                        .WithMany("Reservations")
                         .HasForeignKey("ApartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -655,6 +664,15 @@ namespace Hotel.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Hotel.Models.Apartment", b =>
+                {
+                    b.Navigation("ApartmentImages");
+
+                    b.Navigation("ApartmentToAmenities");
+
+                    b.Navigation("Reservations");
                 });
 #pragma warning restore 612, 618
         }

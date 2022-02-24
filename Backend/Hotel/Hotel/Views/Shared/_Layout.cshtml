@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@model VmLayout
+@inject AppDbContext _context;
+@{
+    var controllerName = this.ViewContext.RouteData.Values["controller"].ToString();
+    Page result = _context.Pages.FirstOrDefault(p=>p.Name == controllerName);
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,7 +23,7 @@
 
     <link rel="stylesheet" href="~/assets/css/style.min.css">
 </head>
-<body style="background-image: url(./assets/media/bg-image.jpg);">
+<body style="background-image: url(/Uploads/@result.ImageName);">
     <header>
         <div class="container">
             <div class="row">
@@ -68,7 +75,8 @@
                                     Ask us anything! We’re here to <br>
                                     answer any questions you have.
                                 </p>
-                                <span>Email:</span> <a href="mailto:info@mysite.com">info@mysite.com</a>
+
+                                @*<span>Email:</span> <a href="mailto:shahinhb@code.edu.az">@Model.Setting.Email</a>*@
                             </div>
                         </div>
                         <div class="col-4">
@@ -80,22 +88,14 @@
                                     <div></div>
                                 </div>
                                 <ul class="social">
-                                    <li>
-                                        <a href="http://www.twitter.com">
-                                            <i class="fab fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="http://www.facebook.com">
-                                            <i class="fab fa-facebook-f"></i>
-                                        </a>
-
-                                    </li>
-                                    <li>
-                                        <a href="http://www.instagram.com">
-                                            <i class="fab fa-instagram"></i>
-                                        </a>
-                                    </li>
+                                    @foreach (var item in Model.Socials)
+                                    {
+                                        <li>
+                                            <a href="@item.Link" title="@item.Name">
+                                                <i class="@item.Icon"></i>
+                                            </a>
+                                        </li>
+                                    }
                                 </ul>
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                                     </div>
                                 </div>
                                 <form asp-area="Admin" asp-controller="Sub" asp-action="Create" method="post">
-                                    <input type="email" placeholder="Enter your email here">
+                                    <input asp-for="@Model.Sub.MailAddress" type="email" placeholder="Enter your email here">
                                     <button type="submit">Subscribe Now</button>
                                 </form>
                             </div>

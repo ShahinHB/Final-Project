@@ -742,3 +742,21 @@ jQuery(document).ready(function() {
         scrollTop: $(document).height()
     }, 1000);
 });
+
+$('.multifile').multifile({
+    container: "#upload-container",
+    template: function (file) {
+        var fileName = file.name;
+        var fileExtension = file.name.split('.').pop();
+
+        var result =
+            '<p class="uploaded_image">' +
+            '<a href="#" class="multifile_remove_input">Close me</a>' +
+            '<span class="filename">$fileName ($fileExtension)</span>' +
+            '</p>';
+
+        result = result.replace('$fileExtension', fileExtension).replace('$fileName', fileName)
+
+        return $(result);
+    }
+})
