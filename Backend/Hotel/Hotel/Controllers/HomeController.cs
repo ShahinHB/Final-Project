@@ -3,6 +3,7 @@ using Hotel.Models;
 using Hotel.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -36,5 +37,7 @@ namespace Hotel.Controllers
             return View(model);
         }
 
+
+       
     }
 }

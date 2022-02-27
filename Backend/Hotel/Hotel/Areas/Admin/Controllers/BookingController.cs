@@ -4,9 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hotel.ViewModels;
 
 namespace Hotel.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class BookingController : Controller
     {
         private readonly AppDbContext _context;
@@ -17,7 +19,9 @@ namespace Hotel.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            return View();
-        }
+            VmBookingList model = new VmBookingList();
+            model.Reservations = _context.Reservations.ToList();
+            return View(model);
+        }     
     }
 }

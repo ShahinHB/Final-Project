@@ -1,0 +1,120 @@
+﻿@model VmApartmentDetails
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="room">
+    <div class="container">
+        <div class="row">
+            <div class="col-10">
+                <div class="title">
+                    <a asp-area="" asp-controller="Apartment" asp-action="Index">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                    <h1>Junior Suite</h1>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <div class="slider">
+                            <ul id="imageGallery">
+                                @if (Model.Apartment.ApartmentImages != null)
+                                {
+                                    @foreach (var item in Model.Apartment.ApartmentImages)
+                                    {
+                                        <li data-thumb="/Uploads/@item.Name" data-src="/Uploads/@item.Name">
+                                            <img src="~/Uploads/@item.Name" />
+                                        </li>
+                                    }
+                                }
+                                else
+                                {
+                                    <li data-thumb="https://davescomputertips.com/wp-content/uploads/2015/10/item-not-found-feature.jpg" data-src="https://davescomputertips.com/wp-content/uploads/2015/10/item-not-found-feature.jpg">
+                                        <img src="https://davescomputertips.com/wp-content/uploads/2015/10/item-not-found-feature.jpg" />
+                                    </li>
+                                }
+
+                            </ul>
+                        </div>
+                        <div class="info">
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <h4>Properties:</h4>
+                                    </div>
+                                    <div class="col-8">
+                                        <ul>
+                                            <li> Accomodates: <span>@Model.Apartment.Limit</span></li>
+                                            <li> Size: <span>@Model.Apartment.Size</span></li>
+                                            <li> Beds: <span>@Model.Apartment.BedCount</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <h4>More Info:</h4>
+                                    </div>
+                                    <div class="col-8">
+                                        <p>
+                                            @Model.Apartment.Info
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <h4>Amenities:</h4>
+                                    </div>
+                                    <div class="col-8">
+                                        <ul>
+                                            @if (Model.Apartment.ApartmentToAmenities != null)
+                                            {
+                                                @foreach (var item in Model.Apartment.ApartmentToAmenities)
+                                                {
+                                                    <li> <i class="@item.Amenity.Icon"></i> <span>@item.Amenity.Name</span></li>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <p>Soon </p>
+                                            }
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="book">
+                            <span>From</span>
+                            <p>$@Model.Apartment.Price</p>
+                            <span>Per Night</span>
+                            <form asp-area="" asp-controller="Apartment" asp-action="CreateHelper" method="post">
+                                <div asp-validation-summary="All" class="text-danger"></div>
+                                <input asp-for="@Model.Reservation.StartDate" type="text" data-provide="datepicker" class="datepicker" autocomplete="off" required placeholder="Check In">
+                                <input asp-for="@Model.Reservation.EndDate" type="text" class="datepicker" autocomplete="off" required placeholder="Check Out">
+                                <input asp-for="@Model.Reservation.AdultsCount" min="0" max="@Model.Apartment.Limit" type="number" required>
+                                <input asp-for="@Model.Reservation.KidsCount" min="0" max="@Model.Apartment.Limit" type="number" required>
+                                <input type="hidden" asp-for="@Model.Reservation.ApartmentId" value="@Model.Apartment.Id" />
+                                <input type="hidden" asp-for="@Model.Apartment.Title" value="@Model.Apartment.Title" />
+                                <button type="submit">Book Now</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+
+</script>

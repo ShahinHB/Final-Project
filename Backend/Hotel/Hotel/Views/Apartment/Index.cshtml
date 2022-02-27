@@ -3,11 +3,7 @@
     ViewData["Title"] = "Index";
 }
 
-<section id="page-title">
-    <h1>
-        Our Apartment
-    </h1>
-</section>
+
 <section id="rooms">
     <div class="container">
         <div class="row">
@@ -24,7 +20,14 @@
                 {
                     <div class="item">
                         <div class="image">
-                            <img src="assets/media/apartment-1.jpg" alt="">
+                            @if (item.ApartmentImages != null)
+                            {
+                                <img src="~/Uploads/@item.ApartmentImages.FirstOrDefault().Name" alt="">
+                            }
+                            else
+                            {
+                                <img src="https://davescomputertips.com/wp-content/uploads/2015/10/item-not-found-feature.jpg" alt="Alternate Text" />
+                            }
                         </div>
                         <div class="description">
                             <div class="info">
@@ -47,7 +50,7 @@
                             <div class="price">
                                 <span>From</span>
                                 <p>@item.Price</p>
-                                <a href="#">
+                                <a asp-area="" asp-controller="Apartment" asp-action="Details" asp-route-id="@item.Id">
                                     More Info
                                 </a>
                             </div>

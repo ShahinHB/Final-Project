@@ -33,8 +33,22 @@ using Hotel.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\Areas\Admin\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Http;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\Areas\Admin\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"c1ee698a34375a187aac5b0c5c7b067b758d0ee1", @"/Areas/Admin/Views/Account/Roles.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6aea743cce3bb7798bf3c20e1316f4913d4984d2", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fca5c8514d328a9d97496a67e7348a1901e55a8f", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     public class Areas_Admin_Views_Account_Roles : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<VmAdminRolesList>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("btn btn-primary mb-3"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -74,7 +88,7 @@ using Hotel.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n<div class=\"container\">\r\n    <div class=\"row\">\r\n        <div class=\"col-lg-12\">\r\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c1ee698a34375a187aac5b0c5c7b067b758d0ee14734", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c1ee698a34375a187aac5b0c5c7b067b758d0ee15158", async() => {
                 WriteLiteral("Add Role");
             }
             );

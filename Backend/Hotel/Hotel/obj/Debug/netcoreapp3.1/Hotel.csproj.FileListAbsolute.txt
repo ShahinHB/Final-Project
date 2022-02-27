@@ -197,3 +197,5 @@ C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.
 C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\CreateUser.cshtml.g.cs
 C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Account\RoleCreate.cshtml.g.cs
 C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\UpdateUser.cshtml.g.cs
+C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Views\Apartment\Details.cshtml.g.cs
+C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Views\Apartment\Checkout.cshtml.g.cs

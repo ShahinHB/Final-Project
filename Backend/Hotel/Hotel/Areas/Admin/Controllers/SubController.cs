@@ -1,5 +1,6 @@
 ﻿using Hotel.Data;
 using Hotel.Models;
+using Hotel.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -23,19 +24,20 @@ namespace Hotel.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Sub model)
+        public IActionResult CreateSub(VmLayout model)
         {
             if (ModelState.IsValid)
             {
-                _context.Subs.Add(model);
+                _context.Subs.Add(model.Sub);
                 _context.SaveChanges();
-                return RedirectToAction("Apartment");
+                return RedirectToAction("Home");
+
             }
-            ModelState.AddModelError("", "All section is required");
             return View(model);
         }
 
-        public IActionResult Delete(int id)
+
+        public IActionResult DeleteSub(int id)
         {
             Sub sub = _context.Subs.Find(id);
             _context.Subs.Remove(sub);
