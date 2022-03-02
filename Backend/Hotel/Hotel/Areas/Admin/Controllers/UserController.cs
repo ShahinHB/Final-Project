@@ -1,6 +1,7 @@
 ﻿using Hotel.Data;
 using Hotel.Models;
 using Hotel.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 namespace Hotel.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "SUPERADMIN")]
     public class UserController : Controller
     {
         private readonly AppDbContext _context;

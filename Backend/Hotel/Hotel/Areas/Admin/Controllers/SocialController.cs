@@ -1,5 +1,6 @@
 ﻿using Hotel.Data;
 using Hotel.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 namespace Hotel.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class SocialController : Controller
     {
         private readonly AppDbContext _context;

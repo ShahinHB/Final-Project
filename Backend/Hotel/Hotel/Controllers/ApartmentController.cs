@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Net.Mail;
+using System.Net;
 
 namespace Hotel.Controllers
 {
@@ -39,8 +41,8 @@ namespace Hotel.Controllers
             {
                 Socials = _context.Socials.ToList(),
                 Setting = _context.Settings.FirstOrDefault(),
-                Apartment = _context.Apartments.Include(i => i.ApartmentImages).Include(m=>m.ApartmentToAmenities).
-                ThenInclude(p=>p.Amenity).Include(i=>i.Reservations).FirstOrDefault(a => a.Id == id)
+                Apartment = _context.Apartments.Include(i => i.ApartmentImages).Include(m => m.ApartmentToAmenities).
+                ThenInclude(p => p.Amenity).Include(i => i.Reservations).FirstOrDefault(a => a.Id == id)
             };
             return View(model);
         }
@@ -49,15 +51,16 @@ namespace Hotel.Controllers
         public IActionResult CreateHelper(VmApartmentDetails model)
         {
             
-            TempData["AdultCount"] = model.Reservation.AdultsCount;
-            TempData["KidsCount"] = model.Reservation.KidsCount;
-            TempData["StartDate"] = model.Reservation.StartDate;
-            TempData["EndDate"] = model.Reservation.EndDate;
-            TempData["Title"] = model.Apartment.Title;
-            TempData["Apartment"] = model.Reservation.ApartmentId;
-            model.DifferDate = (int)((model.Reservation.EndDate - model.Reservation.StartDate).TotalDays);
-            TempData["DateDiffer"] = model.DifferDate;
-            return RedirectToAction("Checkout");
+                TempData["AdultCount"] = model.Reservation.AdultsCount;
+                TempData["KidsCount"] = model.Reservation.KidsCount;
+                TempData["StartDate"] = model.Reservation.StartDate;
+                TempData["EndDate"] = model.Reservation.EndDate;
+                TempData["Title"] = model.Apartment.Title;
+                TempData["Apartment"] = model.Reservation.ApartmentId;
+                model.DifferDate = (int)((model.Reservation.EndDate - model.Reservation.StartDate).TotalDays);
+                TempData["DateDiffer"] = model.DifferDate;
+                TempData["Amount"] = (int)model.DifferDate * (int)model.Apartment.Price;
+                return RedirectToAction("Checkout");
         }
 
 
@@ -66,9 +69,29 @@ namespace Hotel.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress("apartmentsbookingrio@gmail.com", "Rio Apartments");
+                mail.To.Add(model.Reservation.Email);
+                mail.Body = "<p> Congratulations </p>";
+                mail.IsBodyHtml = true;
+                mail.Subject = "Successfull Reservation";
+
+                SmtpClient smtpClient = new SmtpClient();
+                smtpClient.Host = "smtp.gmail.com";
+                smtpClient.EnableSsl = true;
+                smtpClient.Port = 587;
+                smtpClient.Credentials = new NetworkCredential("apartmentsbookingrio@gmail.com", "adidas123456adidas");
+
+                smtpClient.Send(mail);
+
+                model.Reservation.CreatedDate = DateTime.Now;
                 _context.Reservations.Add(model.Reservation);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
+
+               
+
             }
             ModelState.AddModelError("", "All section is required");
             return View(model);
@@ -79,7 +102,7 @@ namespace Hotel.Controllers
             VmBooking model = new VmBooking
             {
                 Socials = _context.Socials.ToList(),
-                Setting = _context.Settings.FirstOrDefault()                
+                Setting = _context.Settings.FirstOrDefault()
             };
 
             return View(model);
@@ -90,6 +113,9 @@ namespace Hotel.Controllers
             return Ok(Json(_context.Reservations.Where(a => a.ApartmentId == id)));
         }
 
-      
+
     }
 }
+
+
+

@@ -10,7 +10,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="About" asp-action="Create">Create</a>
+            <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="About" asp-action="CreateApartment">Create</a>
         </div>
         <hr />
 
@@ -32,8 +32,8 @@
                                 <td>@item.Title</td>
                                 <td>@item.Content</td>
                                 <td>
-                                    <a class="btn btn-success" asp-area="Admin" asp-controller="About" asp-action="Update" asp-route-id="@item.Id">Update</a>
-                                    <a class="btn btn-danger" asp-area="Admin" asp-controller="About" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">Delete</a>
+                                    <a class="btn btn-success" asp-area="Admin" asp-controller="About" asp-action="UpdateApartment" asp-route-id="@item.Id">Update</a>
+                                    <a class="btn btn-danger" asp-area="Admin" asp-controller="About" asp-action="DeleteApartment" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">Delete</a>
                                 </td>
                             </tr>
                         }
@@ -50,7 +50,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="About" asp-action="Create">Create</a>
+            <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="About" asp-action="CreateGames">Create</a>
         </div>
         <hr />
 
@@ -72,8 +72,8 @@
                                 <td>@item.Title</td>
                                 <td>@item.Content</td>
                                 <td>
-                                    <a class="btn btn-success" asp-area="Admin" asp-controller="About" asp-action="Update" asp-route-id="@item.Id">Update</a>
-                                    <a class="btn btn-danger" asp-area="Admin" asp-controller="About" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">Delete</a>
+                                    <a class="btn btn-success" asp-area="Admin" asp-controller="About" asp-action="UpdateGames" asp-route-id="@item.Id">Update</a>
+                                    <a class="btn btn-danger" asp-area="Admin" asp-controller="About" asp-action="DeleteGames" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">Delete</a>
                                 </td>
                             </tr>
                         }
@@ -86,11 +86,11 @@
 </div>
 
 
-@*Cities*@
+@*City*@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="About" asp-action="Create">Create</a>
+            <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="About" asp-action="CreateCity">Create</a>
         </div>
         <hr />
 
@@ -112,8 +112,8 @@
                                 <td>@item.Title</td>
                                 <td>@item.Content</td>
                                 <td>
-                                    <a class="btn btn-success" asp-area="Admin" asp-controller="About" asp-action="Update" asp-route-id="@item.Id">Update</a>
-                                    <a class="btn btn-danger" asp-area="Admin" asp-controller="About" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">Delete</a>
+                                    <a class="btn btn-success" asp-area="Admin" asp-controller="About" asp-action="UpdateCity" asp-route-id="@item.Id">Update</a>
+                                    <a class="btn btn-danger" asp-area="Admin" asp-controller="About" asp-action="DeleteCity" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">Delete</a>
                                 </td>
                             </tr>
                         }
@@ -130,7 +130,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="About" asp-action="Create">Create</a>
+            <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="About" asp-action="CreateFeedback">Create</a>
         </div>
         <hr />
 
@@ -152,8 +152,8 @@
                                 <td>@item.Title</td>
                                 <td>@item.Content</td>
                                 <td>
-                                    <a class="btn btn-success" asp-area="Admin" asp-controller="About" asp-action="Update" asp-route-id="@item.Id">Update</a>
-                                    <a class="btn btn-danger" asp-area="Admin" asp-controller="About" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">Delete</a>
+                                    <a class="btn btn-success" asp-area="Admin" asp-controller="About" asp-action="UpdateFeedback" asp-route-id="@item.Id">Update</a>
+                                    <a class="btn btn-danger" asp-area="Admin" asp-controller="About" asp-action="DeleteFeedback" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">Delete</a>
                                 </td>
                             </tr>
                         }
@@ -171,7 +171,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="About" asp-action="Create">Create</a>
+            <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="About" asp-action="CreateLocation">Create</a>
         </div>
         <hr />
 
@@ -193,8 +193,8 @@
                                 <td>@item.Title</td>
                                 <td>@item.Content</td>
                                 <td>
-                                    <a class="btn btn-success" asp-area="Admin" asp-controller="About" asp-action="Update" asp-route-id="@item.Id">Update</a>
-                                    <a class="btn btn-danger" asp-area="Admin" asp-controller="About" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">Delete</a>
+                                    <a class="btn btn-success" asp-area="Admin" asp-controller="About" asp-action="UpdateLocation" asp-route-id="@item.Id">Update</a>
+                                    <a class="btn btn-danger" asp-area="Admin" asp-controller="About" asp-action="DeleteLocation" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">Delete</a>
                                 </td>
                             </tr>
                         }

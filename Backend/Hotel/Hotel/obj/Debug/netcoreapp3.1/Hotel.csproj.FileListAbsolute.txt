@@ -199,3 +199,7 @@ C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.
 C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\UpdateUser.cshtml.g.cs
 C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Views\Apartment\Details.cshtml.g.cs
 C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Views\Apartment\Checkout.cshtml.g.cs
+C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Apartment\Update.cshtml.g.cs
+C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Booking\Detail.cshtml.g.cs
+C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Account\Profile.cshtml.g.cs
+C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Account\Edit.cshtml.g.cs

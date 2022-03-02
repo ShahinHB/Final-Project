@@ -30,7 +30,7 @@
                                 <td>@item.Title</td>
                                 <td>@item.Subtitle</td>
                                 <td>
-                                    <a class="btn btn-success" asp-area="Admin" asp-controller="Apartment" asp-action="CreateImage" asp-route-id="@item.Id">Add Image</a>
+                                    <a class="btn btn-info" asp-area="Admin" asp-controller="Apartment" asp-action="CreateImage" asp-route-id="@item.Id">Add Image</a>
                                     <a class="btn btn-success" asp-area="Admin" asp-controller="Apartment" asp-action="Update" asp-route-id="@item.Id">Update</a>
                                     <a class="btn btn-danger" asp-area="Admin" asp-controller="Apartment" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">Delete</a>
                                 </td>

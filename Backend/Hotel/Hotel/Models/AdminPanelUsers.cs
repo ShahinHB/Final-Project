@@ -16,6 +16,8 @@ namespace Hotel.Models
         public IFormFile ImageFile { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
+        public string Position { get; set; }
+        public string Address { get; set; }
         public DateTime CreatedDate { get; set; }
         [NotMapped]
         public string RoleId { get; set; }

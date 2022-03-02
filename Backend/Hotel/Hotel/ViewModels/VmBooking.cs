@@ -9,5 +9,6 @@ namespace Hotel.ViewModels
     public class VmBooking : VmLayout
     {
         public Reservation Reservation { get; set; }
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Hotel.Data;
 using Hotel.Models;
 using Hotel.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 namespace Hotel.Areas.Admin.Controllers
 {
     [Area("Admin")]
-
+    [Authorize]
     public class PageController : Controller
     {
         private readonly AppDbContext _context;

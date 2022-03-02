@@ -18,21 +18,14 @@
                     <div class="col-8">
                         <div class="slider">
                             <ul id="imageGallery">
-                                @if (Model.Apartment.ApartmentImages != null)
-                                {
+                                
                                     @foreach (var item in Model.Apartment.ApartmentImages)
                                     {
                                         <li data-thumb="/Uploads/@item.Name" data-src="/Uploads/@item.Name">
                                             <img src="~/Uploads/@item.Name" />
                                         </li>
                                     }
-                                }
-                                else
-                                {
-                                    <li data-thumb="https://davescomputertips.com/wp-content/uploads/2015/10/item-not-found-feature.jpg" data-src="https://davescomputertips.com/wp-content/uploads/2015/10/item-not-found-feature.jpg">
-                                        <img src="https://davescomputertips.com/wp-content/uploads/2015/10/item-not-found-feature.jpg" />
-                                    </li>
-                                }
+                               
 
                             </ul>
                         </div>
@@ -102,6 +95,8 @@
                                 <input asp-for="@Model.Reservation.KidsCount" min="0" max="@Model.Apartment.Limit" type="number" required>
                                 <input type="hidden" asp-for="@Model.Reservation.ApartmentId" value="@Model.Apartment.Id" />
                                 <input type="hidden" asp-for="@Model.Apartment.Title" value="@Model.Apartment.Title" />
+                                <input type="hidden" asp-for="@Model.Apartment.Price"  value="@Model.Apartment.Price" />
+                                <div asp-validation-summary="All" class="text-danger"></div>
                                 <button type="submit">Book Now</button>
                             </form>
                         </div>

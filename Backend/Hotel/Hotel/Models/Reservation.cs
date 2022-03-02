@@ -25,12 +25,16 @@ namespace Hotel.Models
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Country { get; set; }
+        public bool IsActive { get; set; } = false;
+
         public string SpecialRequest { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public double Amount { get; set; }
 
         [ForeignKey("Apartment")]
         public int ApartmentId { get; set; }
         public Apartment Apartment { get; set; }
 
-
+        
     }
 }

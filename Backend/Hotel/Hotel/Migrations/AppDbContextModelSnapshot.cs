@@ -257,17 +257,26 @@ namespace Hotel.Migrations
                     b.Property<int>("AdultsCount")
                         .HasColumnType("int");
 
+                    b.Property<double>("Amount")
+                        .HasColumnType("float");
+
                     b.Property<int>("ApartmentId")
                         .HasColumnType("int");
 
                     b.Property<string>("Country")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<int>("KidsCount")
                         .HasColumnType("int");
@@ -557,6 +566,9 @@ namespace Hotel.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
@@ -564,6 +576,9 @@ namespace Hotel.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Position")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Surname")

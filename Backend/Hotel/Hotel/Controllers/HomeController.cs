@@ -26,7 +26,6 @@ namespace Hotel.Controllers
         {
             VmHome model = new VmHome
             {
-                Sub = _context.Subs.FirstOrDefault(),
                 Socials = _context.Socials.ToList(),
                 Setting = _context.Settings.FirstOrDefault(),
                 AboutApartment = _context.Aboutapartments.FirstOrDefault(),

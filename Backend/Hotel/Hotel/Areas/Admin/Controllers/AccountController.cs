@@ -1,6 +1,7 @@
 ﻿using Hotel.Data;
 using Hotel.Models;
 using Hotel.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -61,6 +62,7 @@ namespace Hotel.Areas.Admin.Controllers
             return RedirectToAction("Login");
         }
 
+        [Authorize(Roles = "SUPERADMIN")]
         public IActionResult Roles()
         {
             VmAdminRolesList model = new VmAdminRolesList();
@@ -68,17 +70,45 @@ namespace Hotel.Areas.Admin.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "SUPERADMIN")]
         public IActionResult RoleCreate()
         {
             VmAdminRole model = new VmAdminRole();
             return View(model);
         }
 
+        [Authorize(Roles = "SUPERADMIN")]
         [HttpPost]
         public async Task<IActionResult> RoleCreate(VmAdminRole model)
         {
             await _roleManager.CreateAsync(model.Role);
             return RedirectToAction("Roles");
+        }
+
+        [Authorize]
+        public IActionResult Profile(string id)
+        {
+            return View(_context.AdminPanelUsers.Find(id));
+        }
+
+        [Authorize]
+        public IActionResult Edit(string id)
+        {
+            return View(_context.AdminPanelUsers.Find(id));
+        }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult Edit(AdminPanelUser model)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.AdminPanelUsers.Update(model);
+                _context.SaveChanges();
+                return RedirectToAction("Profile", new { id = model.Id });
+            }
+
+            return View(model);
         }
     }
 }

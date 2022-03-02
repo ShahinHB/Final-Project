@@ -64,7 +64,7 @@ namespace Hotel
                 endpoints.MapAreaControllerRoute(
                    name: "Areas",
                    areaName: "Admin",
-                   pattern: "admin/{controller=Home}/{action=Index}/{id?}");
+                   pattern: "admin/{controller=Account}/{action=Login}/{id?}");
 
                 endpoints.MapControllerRoute(
                     name: "default",

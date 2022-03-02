@@ -1,6 +1,7 @@
 ﻿using Hotel.Data;
 using Hotel.Models;
 using Hotel.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,8 @@ using System.Threading.Tasks;
 namespace Hotel.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
+
     public class SubController : Controller
     {
         private readonly AppDbContext _context;
@@ -30,7 +33,7 @@ namespace Hotel.Areas.Admin.Controllers
             {
                 _context.Subs.Add(model.Sub);
                 _context.SaveChanges();
-                return RedirectToAction("Home");
+                return RedirectToAction("Index", "Home", new { area = "" });
 
             }
             return View(model);

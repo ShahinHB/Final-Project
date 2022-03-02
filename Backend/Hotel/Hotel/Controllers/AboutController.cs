@@ -20,7 +20,6 @@ namespace Hotel.Controllers
         {
             VmAbout model = new VmAbout
             {
-                Sub = _context.Subs.FirstOrDefault(),
                 Socials = _context.Socials.ToList(),
                 Setting = _context.Settings.FirstOrDefault(),
                 AboutCity = _context.AboutCities.FirstOrDefault(),

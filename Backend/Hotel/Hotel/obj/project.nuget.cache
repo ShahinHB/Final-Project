@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "v+L8tZtBfwnE4gXNKMq3xRCBf4QXPgRzxnDrFTCLLwD71422iZ5VOK36Rq0d+TH7cA/IJHHop6y00RHYgJ7EJQ==",
+  "dgSpecHash": "dgpJbbq5AsrQ8hNz78yznJOBQlboglIyEenWWpCmu2EBg+ROakv/CzgLQIAwib2daS8c6spx0LWoxxgx3s67DQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Shahin\\Desktop\\Final Project\\Backend\\Hotel\\Hotel\\Hotel.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Shahin\\.nuget\\packages\\chart.js\\2.9.3\\chart.js.2.9.3.nupkg.sha512",
     "C:\\Users\\Shahin\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Shahin\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.13\\microsoft.aspnetcore.cryptography.internal.5.0.13.nupkg.sha512",
     "C:\\Users\\Shahin\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.13\\microsoft.aspnetcore.cryptography.keyderivation.5.0.13.nupkg.sha512",

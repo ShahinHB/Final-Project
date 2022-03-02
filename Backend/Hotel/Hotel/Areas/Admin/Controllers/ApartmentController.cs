@@ -1,6 +1,7 @@
 ﻿using Hotel.Data;
 using Hotel.Models;
 using Hotel.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,7 @@ using System.Threading.Tasks;
 namespace Hotel.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class ApartmentController : Controller
     {
         private readonly AppDbContext _context;
@@ -64,6 +66,46 @@ namespace Hotel.Areas.Admin.Controllers
             return View(model);
         }
 
+        public IActionResult Update(int id)
+        {
+            Apartment apartment = _context.Apartments.FirstOrDefault(i => i.Id == id);
+            apartment.ApartmentToAmenityId = _context.ApartmentToAmenities.Where(fr => fr.ApartmentId == id).Select(r => r.AmenityId).ToList();
+
+
+            ViewBag.Amenity = _context.Amenities.ToList();
+            return View(_context.Apartments.Find(id));
+        }
+
+        [HttpPost]
+        public IActionResult Update(Apartment model)
+        {
+            if (ModelState.IsValid)
+            {
+
+                _context.Apartments.Update(model);
+                _context.SaveChanges();
+
+                List<ApartmentToAmenity> restaurantToFeatures = _context.ApartmentToAmenities.Where(fr => fr.ApartmentId == model.Id).ToList();
+
+                foreach (var item in restaurantToFeatures)
+                {
+                    _context.ApartmentToAmenities.Remove(item);
+                }
+                _context.SaveChanges();
+
+                foreach (var item in model.ApartmentToAmenityId)
+                {
+                    ApartmentToAmenity restaurantToFeature = new ApartmentToAmenity();
+                    restaurantToFeature.AmenityId = item;
+                    restaurantToFeature.ApartmentId = model.Id;
+                    _context.ApartmentToAmenities.Add(restaurantToFeature);
+                }
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+
+            }
+            return View(model);
+        }
         public IActionResult CreateImage(int id)
         {
             VmAdminApartmentImage model = new VmAdminApartmentImage
@@ -94,13 +136,20 @@ namespace Hotel.Areas.Admin.Controllers
             return View(model);
         }
 
+        public IActionResult Delete(int id)
+        {
+            Apartment model = _context.Apartments.Find(id);
+            _context.Apartments.Remove(model);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
         public IActionResult DeleteImage(int id)
         {
             ApartmentImage model = _context.ApartmentImages.Find(id);
             _context.ApartmentImages.Remove(model);
             _context.SaveChanges();
-            return View();
-
+            return RedirectToAction("Index");
         }
     }
 }

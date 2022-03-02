@@ -1,0 +1,51 @@
+﻿@model Reservation
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div style="display: flex;">
+    <p style=" margin-right: 20px">FullName: </p> <span> @Model.Name @Model.Surname</span>
+</div>
+
+<div style="display: flex; margin-right: 20px">
+    <p style=" margin-right: 20px">Contact Details: </p> <span> @Model.Phone @Model.Email</span>
+</div>
+
+<div style="display: flex; margin-right: 20px">
+    <p style=" margin-right: 20px">Where: </p> <span> @Model.Country</span>
+
+</div>
+
+<div style="display: flex; margin-right: 20px">
+    <p style=" margin-right: 20px">Between: </p> <span> @Model.StartDate.ToString("MM/dd/yyyy")-@Model.EndDate.ToString("MM/dd/yyyy")</span>
+
+</div>
+
+<div style="display: flex; margin-right: 20px">
+    <p style=" margin-right: 20px">Count: </p> <span> @Model.AdultsCount Adult @Model.KidsCount Kid</span>
+
+</div>
+
+<div style="display: flex; margin-right: 20px">
+    <p style=" margin-right: 20px">Special Request: </p> <span> @Model.SpecialRequest</span>
+
+</div>
+
+<div style="display: flex; margin-right: 20px">
+    <p style=" margin-right: 20px">Order Date: </p> <span> @Model.CreatedDate</span>
+
+</div>
+
+<div style="display: flex; margin-right: 20px">
+    <p style=" margin-right: 20px">Totally Amount: </p> <span> @Model.Amount</span>
+
+</div>
+
+<div style="display: flex; margin-right: 20px">
+    <p style=" margin-right: 20px">Apartment: </p> <span> @Model.Apartment.Title  (ID: @Model.Apartment.Id)</span>
+</div>
+
+
+
+
