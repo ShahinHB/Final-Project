@@ -12,6 +12,7 @@
     -ms-user-select: none;
     user-select: none
 }
+
 .lightSlider:before, .lightSlider:after {
     content: " ";
     display: table;

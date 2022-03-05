@@ -1,6 +1,6 @@
 ﻿@inject UserManager<IdentityUser> userManager
 @inject SignInManager<IdentityUser> signInManager
-
+@inject AppDbContext _context;
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,9 +46,9 @@
             <div class="page-header-inner ">
                 <!-- logo start -->
                 <div class="page-logo">
-                    <a href="index.html">
+                    <a asp-area="Admin" asp-controller="Home" asp-action="Index">
                         <img alt="" src="~/Areas/assets/img/logo.png">
-                        <span class="logo-default">Spice</span>
+                        <span class="logo-default">Rio</span>
                     </a>
                 </div>
                 <!-- logo end -->
@@ -74,14 +74,19 @@
                 <!-- start header menu -->
                 <div class="top-menu">
                     <ul class="nav navbar-nav pull-right">
-
+                        @{
+                            var imageName = _context.AdminPanelUsers.FirstOrDefault(a=>a.Id == userManager.GetUserId(User)).Image;
+                            var Name = _context.AdminPanelUsers.FirstOrDefault(a => a.Id == userManager.GetUserId(User)).Name;
+                            var Surname = _context.AdminPanelUsers.FirstOrDefault(a => a.Id == userManager.GetUserId(User)).Surname;
+                            var position = _context.AdminPanelUsers.FirstOrDefault(a => a.Id == userManager.GetUserId(User)).Position;
+                        }
                         <!-- start manage user dropdown -->
                         @if (signInManager.IsSignedIn(User))
                         {
                             <li class="dropdown dropdown-user">
                                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                                    data-close-others="true">
-                                    <img alt="" class="img-circle " src="~/Areas/assets/img/dp.jpg" />
+                                    <img alt="" class="img-circle " src="~/Uploads/@imageName" />
                                     <span class="username username-hide-on-mobile"> @userManager.GetUserName(User) </span>
                                     <i class="fa fa-angle-down"></i>
                                 </a>
@@ -92,7 +97,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="lock_screen.html">
+                                        <a asp-area="Admin" asp-controller="Account" asp-action="Lock" asp-route-id="@userManager.GetUserId(User)">
                                             <i class="icon-lock"></i> Lock
                                         </a>
                                     </li>
@@ -134,12 +139,12 @@
                                 <div class="user-panel">
                                     <div class="row">
                                         <div class="sidebar-userpic">
-                                            <img src="~/Areas/assets/img/dp.jpg" class="img-responsive" alt="">
+                                            <img src="~/Uploads/@imageName" class="img-responsive" alt="">
                                         </div>
                                     </div>
                                     <div class="profile-usertitle">
-                                        <div class="sidebar-userpic-name"> John Deo </div>
-                                        <div class="profile-usertitle-job"> Manager </div>
+                                        <div class="sidebar-userpic-name"> @Name @Surname</div>
+                                        <div class="profile-usertitle-job"> @position </div>
                                     </div>
                                     <div class="sidebar-userpic-btn">
                                         <a class="tooltips" href="user_profile.html" data-placement="top"

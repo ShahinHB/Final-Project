@@ -18,14 +18,14 @@
                     <div class="col-8">
                         <div class="slider">
                             <ul id="imageGallery">
-                                
-                                    @foreach (var item in Model.Apartment.ApartmentImages)
-                                    {
-                                        <li data-thumb="/Uploads/@item.Name" data-src="/Uploads/@item.Name">
-                                            <img src="~/Uploads/@item.Name" />
-                                        </li>
-                                    }
-                               
+
+                                @foreach (var item in Model.Apartment.ApartmentImages)
+                                {
+                                    <li data-thumb="/Uploads/@item.Name" data-src="/Uploads/@item.Name">
+                                        <img src="~/Uploads/@item.Name" />
+                                    </li>
+                                }
+
 
                             </ul>
                         </div>
@@ -89,13 +89,13 @@
                             <span>Per Night</span>
                             <form asp-area="" asp-controller="Apartment" asp-action="CreateHelper" method="post">
                                 <div asp-validation-summary="All" class="text-danger"></div>
-                                <input asp-for="@Model.Reservation.StartDate" type="text" data-provide="datepicker" class="datepicker" autocomplete="off" required placeholder="Check In">
-                                <input asp-for="@Model.Reservation.EndDate" type="text" class="datepicker" autocomplete="off" required placeholder="Check Out">
+                                <input asp-for="@Model.Reservation.StartDate" type="text" class="datepicker" id="txtFromDate" autocomplete="off" required placeholder="Check In">
+                                <input asp-for="@Model.Reservation.EndDate" type="text" class="datepicker" autocomplete="off" id="txtToDate" required placeholder="Check Out">
                                 <input asp-for="@Model.Reservation.AdultsCount" min="0" max="@Model.Apartment.Limit" type="number" required>
                                 <input asp-for="@Model.Reservation.KidsCount" min="0" max="@Model.Apartment.Limit" type="number" required>
                                 <input type="hidden" asp-for="@Model.Reservation.ApartmentId" value="@Model.Apartment.Id" />
                                 <input type="hidden" asp-for="@Model.Apartment.Title" value="@Model.Apartment.Title" />
-                                <input type="hidden" asp-for="@Model.Apartment.Price"  value="@Model.Apartment.Price" />
+                                <input type="hidden" asp-for="@Model.Apartment.Price" value="@Model.Apartment.Price" />
                                 <div asp-validation-summary="All" class="text-danger"></div>
                                 <button type="submit">Book Now</button>
                             </form>
@@ -112,4 +112,29 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 
+    $(document).ready(function () {
+
+        var date_range = [["11-04-2021", "12-04-2021"], ["11-03-2021", "12-03-2021"], ["01-03-2021", "09-03-2021"]];
+
+        $(".datepicker").datepicker({
+            beforeShowDay: function (date) {
+
+                var string = $.datepicker.formatDate('mm-dd-yy', date);
+
+                for (var i = 0; i < date_range.length; i++) {
+
+                    if (Array.isArray(date_range[i])) {
+
+                        var from = new Date(date_range[i][0]);
+                        var to = new Date(date_range[i][1]);
+                        var current = new Date(string);
+
+                        if (current >= from && current <= to) return false;
+                    }
+
+                }
+                return [date_range.indexOf(string) == -1]
+            }
+        });
+    });
 </script>

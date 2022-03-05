@@ -2,15 +2,19 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-
+<style>
+    i {
+        text-transform: lowercase;
+        cursor: default;
+    }
+</style>
 <section id="rooms">
     <div class="container">
         <div class="row">
             <div class="col-10">
                 <h1>Our Rooms</h1>
-                <form action="#">
-                    <input type="date" class="date">
+                <form asp-area="" asp-controller="Apartment" asp-action="Index">
+                    <input type="date" asp-for="@Model.vmSearch.startDate" class="date">
                     <input type="date" class="date">
                     <input type="number" class="count">
                     <input type="number" class="count">
@@ -42,14 +46,18 @@
                                     <li>Beds: <span>2 Double(s)</span> </li>
                                 </ul>
                                 <ul class="features">
-                                    <li title="WiFi">
-                                        <i class="fas fa-wifi"></i>
-                                    </li>
+                                    @foreach (var element in item.ApartmentToAmenities)
+                                    {
+                                        <li title="@element.Amenity.Name">
+                                            <i class="material-icons f-left">@element.Amenity.Icon</i>
+                                        </li>
+                                    }
+
                                 </ul>
                             </div>
                             <div class="price">
                                 <span>From</span>
-                                <p>@item.Price</p>
+                                <p>$ @item.Price</p>
                                 <a asp-area="" asp-controller="Apartment" asp-action="Details" asp-route-id="@item.Id">
                                     More Info
                                 </a>

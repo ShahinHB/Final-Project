@@ -11,5 +11,6 @@ namespace Hotel.ViewModels
         public List<Apartment> Apartments { get; set; }
         public List<Amenity> Amenities { get; set; }
         public List<ApartmentImage> ApartmentImages { get; set; }
+        public VmSearch vmSearch { get; set; }
     }
 }

@@ -15,6 +15,7 @@
                                 <h2>Guest Details</h2>
                             </div>
                             <form asp-area="" asp-controller="Apartment" asp-action="Create">
+                                <input type="hidden" asp-for="@Model.Reservation.Amount" value="@TempData["Amount"]" />
                                 <input type="hidden" asp-for="@Model.Reservation.ApartmentId" value="@TempData["Apartment"]" />
                                 <input type="hidden" asp-for="@Model.Reservation.AdultsCount" value="@TempData["AdultCount"]" />
                                 <input type="hidden" asp-for="@Model.Reservation.KidsCount" value="@TempData["KidsCount"]" />
@@ -37,6 +38,11 @@
                                         <label class="form-label">Phone Number</label>
                                         <input class="form-control" required asp-for="@Model.Reservation.Phone">
                                     </div>
+                                    <style>
+                                        i{
+                                            cursor: default;
+                                        }
+                                    </style>
                                     <div class="col-6 mb-3">
                                         <label class="form-label" style="display: block;">Country</label>
                                         <select class="form-control" asp-for="@Model.Reservation.Country">
@@ -362,7 +368,7 @@
                                         </p>
                                     </div>
                                     <div class="col-6" style="text-align: right;">
-                                        <span>100$</span>
+                                        <span>@TempData["Amount"]$</span>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -394,5 +400,6 @@
             </div>
         </div>
     </div>
-
+    <script>
+    </script>
 </section>

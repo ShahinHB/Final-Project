@@ -23,15 +23,16 @@ namespace Hotel.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public IActionResult Index(VmSearch search)
         {
             VmApartment model = new VmApartment
             {
                 Socials = _context.Socials.ToList(),
                 Setting = _context.Settings.FirstOrDefault(),
                 Amenities = _context.Amenities.ToList(),
-                Apartments = _context.Apartments.ToList(),
-                ApartmentImages = _context.ApartmentImages.ToList()
+                Apartments = _context.Apartments.Include(ap => ap.ApartmentImages).Include(a => a.ApartmentToAmenities)
+                .ThenInclude(b => b.Amenity).ToList(),
+                //Apartments = _context.Reservations.Where(r => r.StartDate < search.startDate).Select(a=>a.Apartment).ToList()
             };
             return View(model);
         }
@@ -89,9 +90,6 @@ namespace Hotel.Controllers
                 _context.Reservations.Add(model.Reservation);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
-
-               
-
             }
             ModelState.AddModelError("", "All section is required");
             return View(model);

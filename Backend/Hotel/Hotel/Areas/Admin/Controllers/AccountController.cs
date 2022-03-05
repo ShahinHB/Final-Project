@@ -2,10 +2,12 @@
 using Hotel.Models;
 using Hotel.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,12 +20,16 @@ namespace Hotel.Areas.Admin.Controllers
         private readonly AppDbContext _context;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public AccountController(AppDbContext context, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, RoleManager<IdentityRole> roleManager)
+       
+        public AccountController(AppDbContext context, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, RoleManager<IdentityRole> roleManager, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
             _signInManager = signInManager;
             _roleManager = roleManager;
+            _webHostEnvironment = webHostEnvironment;
+
         }
 
         public IActionResult AccessDenied()
@@ -103,12 +109,47 @@ namespace Hotel.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.AdminPanelUsers.Update(model);
+                AdminPanelUser user = _context.AdminPanelUsers.Find(model.Id);
+                user.Name = model.Name;
+                user.Address = model.Address;
+                user.Surname = model.Surname;
+                user.Email = model.Email;
+                user.PhoneNumber = model.PhoneNumber;
                 _context.SaveChanges();
                 return RedirectToAction("Profile", new { id = model.Id });
             }
 
             return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult ProfilePhoto(AdminPanelUser model)
+        {
+            if (ModelState.IsValid)
+            {
+                AdminPanelUser user = _context.AdminPanelUsers.Find(model.Id);
+                string fileName = Guid.NewGuid() + "-" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + model.ImageFile.FileName;
+                string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", fileName);
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    model.ImageFile.CopyTo(stream);
+                }
+                model.Image = fileName;
+                user.Image = model.Image;
+                _context.SaveChanges();
+                return RedirectToAction("Profile", new { id = model.Id });
+            }
+            return View(model);
+        }
+
+        public async Task<IActionResult> Lock(string id) 
+        {
+            await _signInManager.SignOutAsync();
+
+            VmAccount user = new VmAccount();
+            user.User = _context.AdminPanelUsers.Find(id);
+            
+            return View(user);
         }
     }
 }
