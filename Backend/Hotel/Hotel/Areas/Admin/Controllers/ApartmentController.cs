@@ -120,18 +120,37 @@ namespace Hotel.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult CreateImage(VmAdminApartmentImage model)
         {
+            
+
             if (ModelState.IsValid)
             {
-                string fileName = Guid.NewGuid() + "-" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + model.ApartmentImage.ImageFile.FileName;
-                string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", fileName);
-                using (var stream = new FileStream(filePath, FileMode.Create))
+                if (model.ApartmentImage.ImageFile != null)
                 {
-                    model.ApartmentImage.ImageFile.CopyTo(stream);
+                    if (model.ApartmentImage.ImageFile.ContentType == "image/jpeg" || model.ApartmentImage.ImageFile.ContentType == "image/png")
+                    {
+
+                        string fileName = Guid.NewGuid() + "-" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + model.ApartmentImage.ImageFile.FileName;
+                        string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", fileName);
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            model.ApartmentImage.ImageFile.CopyTo(stream);
+                        }
+                        model.ApartmentImage.Name = fileName;
+                        _context.ApartmentImages.Add(model.ApartmentImage);
+                        _context.SaveChanges();
+                        return RedirectToAction("CreateImage", new { id = model.ApartmentImage.ApartmentId });
+                    }
+                    else
+                    {
+                        TempData["ErrorMessage"] = "You can Upload only jpg, jpeg and png format file";
+                        return RedirectToAction("CreateImage", new { id = model.ApartmentImage.ApartmentId });
+                    }
                 }
-                model.ApartmentImage.Name = fileName;
-                _context.ApartmentImages.Add(model.ApartmentImage);
-                _context.SaveChanges();
-                return RedirectToAction("Index", "Apartment");
+                else
+                {
+                    TempData["ErrorMessage"] = "You don't choose Image";
+                    return RedirectToAction("CreateImage", new { id = model.ApartmentImage.ApartmentId });
+                }
             }
             return View(model);
         }
@@ -149,7 +168,7 @@ namespace Hotel.Areas.Admin.Controllers
             ApartmentImage model = _context.ApartmentImages.Find(id);
             _context.ApartmentImages.Remove(model);
             _context.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("CreateImage", new { id = model.ApartmentId });
         }
     }
 }

@@ -23,7 +23,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
           integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link href="~/assets/JS/jquery-ui-1.13.1.custom/jquery-ui.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="sweetalert2.min.css">
     <link rel="stylesheet" href="~/assets/css/style.min.css">
 </head>
 <body style="background-image: url(/Uploads/@result.ImageName);">
@@ -113,9 +112,11 @@
                                     <div>
                                     </div>
                                 </div>
-                                <form asp-area="Admin" asp-controller="Sub" asp-action="CreateSub" method="post">
-                                    <input asp-for="@Model.Sub.MailAddress" type="email" placeholder="Enter your email here">
-                                    <button type="submit" class="sweet-submit">Subscribe Now</button>
+                                <form asp-area="Admin" asp-controller="Sub" asp-action="Subscribe" id="subscribies" method="post">
+                                    <input name="email" type="email" placeholder="Enter your email here">
+                                    <button type="submit" id="submitBtn" >Subscribe Now</button>
+                                    <div class="alert alert-success" style="display:none"></div>
+                                    <div class="alert alert-warning" style="display:none"></div>
                                 </form>
                             </div>
                         </div>
@@ -130,7 +131,6 @@
         </div>
     </footer>
 
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="~/assets/JS/lightslider.js"></script>
     <script src="~/assets/JS/main.js"></script>
@@ -140,9 +140,48 @@
     <script src="~/assets/JS/DateFunctions.js"></script>
     <script src="~/assets/JS/DatePicker.js"></script>
     <script type="text/javascript">
-        $(".sweet-submit").click(function () {
-            $(swal("Success", "You are Subscribed",)).hide();
+
+        $(document).ready(function () {
+            let submit = $("#submitBtn");
+
+            submit.click(function (e) {
+                e.preventDefault();
+
+                let email = $("#subscribies input[name='email']");
+                let success = $("#subscribies .alert-success");
+                let warning = $("#subscribies .alert-warning");
+                success.css("display", "none");
+                warning.css("display", "none");
+
+                $.ajax({
+                    url: "Sub/Subscribe",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        email: email.val()
+                    },
+                    success: function (response) {
+                        if (response.status == true) {
+                            success.css("display", "block");
+                            success.text(response.message);
+                        } else {
+                            warning.css("display", "block");
+                            warning.text(response.message);
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    },
+                    complete: function () {
+                        email.val("");
+                    }
+
+                });
+            });
+
         });
+       
     </script>
+   
 </body>
 </html>

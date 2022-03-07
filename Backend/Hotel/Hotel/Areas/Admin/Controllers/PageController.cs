@@ -41,29 +41,38 @@ namespace Hotel.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                
-                if (model.Page.ImageFile.ContentType == "image/jpeg" || model.Page.ImageFile.ContentType == "image/png")
+                if (model.Page.ImageFile != null )
                 {
-                    string fileName = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss-fffffff") + model.Page.ImageFile.FileName;
-                    string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", fileName);
-
-                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    if (model.Page.ImageFile.ContentType == "image/jpeg" || model.Page.ImageFile.ContentType == "image/png")
                     {
-                        model.Page.ImageFile.CopyTo(stream);
+                        string fileName = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss-fffffff") + model.Page.ImageFile.FileName;
+                        string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", fileName);
+
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            model.Page.ImageFile.CopyTo(stream);
+                        }
+
+                        model.Page.ImageName = fileName;
+                        _context.Pages.Add(model.Page);
+                        _context.SaveChanges();
+
+
+                        return RedirectToAction("Index");
                     }
-                    
-                    model.Page.ImageName = fileName;
-                    _context.Pages.Add(model.Page);
-                    _context.SaveChanges();
-
-
-                    return RedirectToAction("Index");
+                    else
+                    {
+                        ModelState.AddModelError("", "You can upload only .jpeg, .jpg and .png");
+                        return View(model);
+                    }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "You can upload only .jpeg, .jpg and .png");
-                    return View(model);
+                    _context.Pages.Add(model.Page);
+                    _context.SaveChanges();
                 }
+                
+                
             }
             ModelState.AddModelError("", "All section is required");
             return View(model);
@@ -79,7 +88,7 @@ namespace Hotel.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (model.ImageFile.ContentType == "image/jpeg" || model.ImageFile.ContentType == "image/png")
+                if (model.ImageFile != null)
                 {
                     string fileName = model.Title + DateTime.Now;
                     string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", fileName);
@@ -92,15 +101,17 @@ namespace Hotel.Areas.Admin.Controllers
                     model.ImageName = fileName;
                     _context.Pages.Update(model);
                     _context.SaveChanges();
-
-
-                    return RedirectToAction("Index");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "You can upload only .jpeg, .jpg and .png");
-                    return View(model);
+                    _context.Pages.Update(model);
+                    _context.SaveChanges();
                 }
+                    
+
+
+                    return RedirectToAction("Index");
+                
             }
             ModelState.AddModelError("", "All section is required");
             return View(model);

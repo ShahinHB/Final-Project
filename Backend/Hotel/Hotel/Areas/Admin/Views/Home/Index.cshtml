@@ -121,7 +121,6 @@
             <div class="card-head">
                 <header>Chart Survey</header>
                 <div class="tools">
-                    <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
                     <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
                     <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
                 </div>
@@ -146,7 +145,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div id="area_line_chart" class="width-100"></div>
+                    <canvas id="bar">
+                    </canvas>
                 </div>
             </div>
         </div>
@@ -232,9 +232,7 @@
     }
 }
     
-<canvas id="bar">
 
-</canvas>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="text/javascript">

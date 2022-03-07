@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Net.Mail;
 using System.Net;
+using System.Globalization;
 
 namespace Hotel.Controllers
 {
@@ -86,7 +87,12 @@ namespace Hotel.Controllers
 
                 smtpClient.Send(mail);
 
+                CultureInfo provider = CultureInfo.InvariantCulture;
+
+
                 model.Reservation.CreatedDate = DateTime.Now;
+                model.Reservation.Tax = 0.21 * model.Reservation.Amount;
+                model.Reservation.TotalAmount = model.Reservation.Amount + model.Reservation.Tax;
                 _context.Reservations.Add(model.Reservation);
                 _context.SaveChanges();
                 return RedirectToAction("Index");

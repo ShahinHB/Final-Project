@@ -51,6 +51,9 @@
                                 <button type="submit" class="btn btn-primary">Create</button>
                             </div>
                             <input type="hidden" asp-for="@Model.ApartmentImage.ApartmentId" value="@Model.Apartment.Id" />
+                            <div class="text-danger">
+                                @TempData["ErrorMessage"]
+                            </div>
                         </form>
                     </div>
                 </div>

@@ -30,6 +30,8 @@ namespace Hotel.Models
         public string SpecialRequest { get; set; }
         public DateTime CreatedDate { get; set; }
         public double Amount { get; set; }
+        public double Tax { get; set; }
+        public double TotalAmount { get; set; }
 
         [ForeignKey("Apartment")]
         public int ApartmentId { get; set; }
