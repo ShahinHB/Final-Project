@@ -29,15 +29,41 @@ namespace Hotel.Controllers
         }
 
 
-        [HttpPost]
-        public IActionResult CreateMessage(Message message)
+        //[HttpPost]
+        //public IActionResult CreateMessage(Message message)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _context.Messages.Add(message);
+        //        _context.SaveChanges();
+        //    }
+        //    return RedirectToAction("Index");
+        //}
+
+        public IActionResult CreateMessage(string email, string content, string name)
         {
-            if (ModelState.IsValid)
+            VmContactResponse response = new VmContactResponse();
+
+
+            if (email != null && content != null && name != null)
             {
+                Message message = new Message();
+                message.Content = content;
+                message.Email = email;
+                message.Name = name;
                 _context.Messages.Add(message);
                 _context.SaveChanges();
+                response.Status = true;
+                response.Message = "Your message send successfully!";
             }
-            return RedirectToAction("Index");
+            else
+            {
+                response.Status = false;
+                response.Message = "Your email have already subscribed!";
+            }
+            return Json(response);
+
         }
+
     }
 }

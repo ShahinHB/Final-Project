@@ -1,4 +1,4 @@
-﻿@model VmContact   
+﻿@model VmContact
 @{
     ViewData["Title"] = "Index";
 }
@@ -19,10 +19,11 @@
                         <div class="col-8">
                             <div class="content">
                                 <form asp-area="" asp-controller="Contact" asp-action="CreateMessage" method="post">
-                                    <input asp-for="@Model.Message.Name" placeholder="Name">
-                                    <input asp-for="@Model.Message.Email" type="email" placeholder="Email">
-                                    <textarea asp-for="@Model.Message.Content" rows="10" placeholder="Type your message here..."></textarea>
-                                    <button type="submit">Send Message</button>
+                                    <input name="name" placeholder="Name">
+                                    <input name="email" type="email" placeholder="Email">
+                                    <textarea class="msgContent" rows="10" placeholder="Type your message here..."></textarea>
+                                    <button type="submit" id="msgBtn" class="btn btn-primary">Send Message</button>
+
                                 </form>
                             </div>
                         </div>
@@ -60,3 +61,63 @@
         </div>
     </div>
 </section>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        let submit = $("#msgBtn");
+
+        submit.click(function (e) {
+            e.preventDefault();
+
+            let email = $("#contact .content input[name='email']");
+            let name = $("#contact .content input[name='name']");
+            let content = $("#contact .content .msgContent");
+
+       
+
+            $.ajax({
+                url: "Contact/CreateMessage",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    email: email.val(),
+                    name: name.val(),
+                    content: content.val(),
+                },
+                success: function (response) {
+                    if (response.status == true) {
+                        Swal.fire(
+                            'Thank you for subscribing!',
+                            'Your message send succesfully',
+                            'success'
+                        )
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Please fill all input',
+                        })
+                    }
+                },
+                error: function (error) {
+                    console.log(error);
+                },
+                complete: function () {
+                    email.val("");
+                    content.val("");
+                    name.val("");
+                   
+                }
+
+            });
+        });
+
+    });
+
+</script>
+
