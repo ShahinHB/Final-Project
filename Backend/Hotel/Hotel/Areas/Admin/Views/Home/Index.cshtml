@@ -4,6 +4,16 @@
     ViewData["Title"] = "Index";
 }
 
+@{
+    var dayList = _context.Reservations.Where(r => r.CreatedDate.ToString("dd") == DateTime.Now.ToString("dd"));
+    var monthList = _context.Reservations.Where(r => r.CreatedDate.ToString("dd") == DateTime.Now.ToString("dd"));
+    var yearList = _context.Reservations.Where(r => r.CreatedDate.ToString("dd") == DateTime.Now.ToString("dd"));
+
+
+   
+}
+
+
 <div class="page-bar">
     <div class="page-title-breadcrumb">
         <div class=" pull-left">
@@ -30,7 +40,7 @@
                     <div class="progress" style="visibility:hidden">
                         <div class="progress-bar width-60"></div>
                     </div>
-                    
+
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -53,7 +63,7 @@
                     <div class="progress" style="visibility:hidden">
                         <div class="progress-bar width-40"></div>
                     </div>
-                   
+
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -116,24 +126,6 @@
                 </div>
             </div>
             <div class="card-body no-padding height-9">
-                <div class="row text-center">
-                    <div class="col-sm-3 col-6">
-                        <h4 class="margin-0">$ 209 </h4>
-                        <p class="text-muted"> Today's Income</p>
-                    </div>
-                    <div class="col-sm-3 col-6">
-                        <h4 class="margin-0">$ 837 </h4>
-                        <p class="text-muted">This Week's Income</p>
-                    </div>
-                    <div class="col-sm-3 col-6">
-                        <h4 class="margin-0">$ 3410 </h4>
-                        <p class="text-muted">This Month's Income</p>
-                    </div>
-                    <div class="col-sm-3 col-6">
-                        <h4 class="margin-0">$ 78,000 </h4>
-                        <p class="text-muted">This Year's Income</p>
-                    </div>
-                </div>
                 <div class="row">
                     <canvas id="bar">
                     </canvas>
@@ -144,7 +136,7 @@
 </div>
 <!-- Chart end -->
 
-@{ 
+@{
     var listJanuary = _context.Reservations.Where(a => a.CreatedDate.Month == 1 && a.CreatedDate.Year == 2022).ToList();
     var listFebruary = _context.Reservations.Where(a => a.CreatedDate.Month == 2 && a.CreatedDate.Year == 2022).ToList();
     var listMarch = _context.Reservations.Where(a => a.CreatedDate.Month == 3 && a.CreatedDate.Year == 2022).ToList();
@@ -221,7 +213,7 @@
         sumDecember += item.Amount;
     }
 }
-    
+
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

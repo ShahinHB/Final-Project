@@ -13,14 +13,6 @@
         <div class="row">
             <div class="col-10 col-lg-10 col-sm-12 col-xs-12">
                 <h1>Our Rooms</h1>
-                <form asp-area="" asp-controller="Apartment" asp-action="Index">
-                    <input type="date" asp-for="@Model.vmSearch.startDate" class="date col-xs-12 col-sm-12">
-                    <input type="date" class="date col-xs-12 col-sm-12">
-                    <input type="number" class="count col-xs-12 col-sm-12">
-                    <input type="number" class="count col-xs-12 col-sm-12">
-                    <button type="submit">Search</button> 
-                </form>
-               
                 @foreach (var item in Model.Apartments)
                 {
                     <div class="item">
