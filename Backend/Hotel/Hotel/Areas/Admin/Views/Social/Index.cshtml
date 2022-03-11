@@ -3,45 +3,67 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="Social" asp-action="Create">Create</a>
-        </div>
-        <hr />
-
-        <div class="col-lg-12 mt-3">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">İcon</th>
-                        <th scope="col">Link</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @{ int i = 0;
-                        foreach (var item in Model)
-                        {
-                            i++;
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-box">
+            <div class="card-head">
+                <header>All Bookings</header>
+                <div class="tools">
+                    <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+                    <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
+                </div>
+            </div>
+            <div class="card-body ">
+                <div class="row p-b-20" style="display:flex; justify-content:right">
+                    <div class="col-md-6 col-sm-6 col-6">
+                        <div class="btn-group pull-right" id="myToolBar">
+                            <a class="btn deepPink-bgcolor  btn-outline dropdown-toggle"
+                               data-toggle="dropdown">
+                                Tools
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-scrollable">
+                    <table class="table">
+                        <thead>
                             <tr>
-                                <th scope="row">@i</th>
-                                <td>@item.Name</td>
-                                <td>@item.Icon</td>
-                                <td>@item.Link</td>
-
-                                <td>
-                                    <a class="btn btn-success" asp-area="Admin" asp-controller="Social" asp-action="Update" asp-route-id="@item.Id">Update</a>
-                                    <a class="btn btn-danger" asp-area="Admin" asp-controller="Social" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">Delete</a>
-                                </td>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">İcon</th>
+                                <th scope="col">Link</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
                             </tr>
-                        }
-                    }
-                </tbody>
-            </table>
+                        </thead>
+                        <tbody>
+                            @{ int i = 0;
+                                foreach (var item in Model)
+                                {
+                                    i++;
+                                    <tr>
+                                        <th scope="row">@i</th>
+                                        <td>@item.Name</td>
+                                        <td>@item.Icon</td>
+                                        <td>@item.Link</td>
+                                        <td><i class="@item.Icon"></i></td>
 
+
+                                        <td>
+                                            <a class="btn btn-success" asp-area="Admin" asp-controller="Social" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                                            <a class="btn btn-danger" asp-area="Admin" asp-controller="Social" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+
+

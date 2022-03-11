@@ -37,6 +37,11 @@ namespace Hotel.Areas.Admin.Controllers
             return View();
         }
 
+        public IActionResult Error404()
+        {
+            return View();
+        }
+
         public IActionResult Login()
         {
             return View();
@@ -122,24 +127,46 @@ namespace Hotel.Areas.Admin.Controllers
             return View(model);
         }
 
+
+        //public IActionResult ProfilePhoto(string id)
+        //{
+        //    return (_context.AdminPanelUser.Find(id));
+        //}
+
         [HttpPost]
         public IActionResult ProfilePhoto(AdminPanelUser model)
         {
-            if (ModelState.IsValid)
+            if (model.ImageFile != null)
             {
-                AdminPanelUser user = _context.AdminPanelUsers.Find(model.Id);
-                string fileName = Guid.NewGuid() + "-" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + model.ImageFile.FileName;
-                string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", fileName);
-                using (var stream = new FileStream(filePath, FileMode.Create))
+                if (ModelState.IsValid)
                 {
-                    model.ImageFile.CopyTo(stream);
+                    if (model.ImageFile.ContentType == "image/jpeg" || model.ImageFile.ContentType == "image/png")
+                    {
+                        AdminPanelUser user = _context.AdminPanelUsers.Find(model.Id);
+                        string fileName = Guid.NewGuid() + "-" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + model.ImageFile.FileName;
+                        string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", fileName);
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            model.ImageFile.CopyTo(stream);
+                        }
+                        model.Image = fileName;
+                        user.Image = model.Image;
+                        _context.SaveChanges();
+                        return RedirectToAction("Profile", new { id = model.Id });
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "You can only choose .png .jpg and .jpeg format file");
+                        return View(model);
+                    }
                 }
-                model.Image = fileName;
-                user.Image = model.Image;
-                _context.SaveChanges();
+                return View(model);
+            }
+            else
+            {
                 return RedirectToAction("Profile", new { id = model.Id });
             }
-            return View(model);
+
         }
 
         public async Task<IActionResult> Lock(string id) 

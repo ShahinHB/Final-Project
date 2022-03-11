@@ -15,16 +15,21 @@
                     <span asp-validation-for="@Model.User.UserName" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="@Model.Password" class="form-label">Şifrəsi</label>
+                    <label asp-for="@Model.Password" class="form-label">Password</label>
                     <input class="form-control" asp-for="@Model.Password">
                     <span asp-validation-for="@Model.Password" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="@Model.User.RoleId" class="form-label">Vəzifə</label>
+                    <label asp-for="@Model.User.RoleId" class="form-label">Position</label>
                     <select class="form-control" aria-label="Default select example" asp-for="@Model.User.RoleId" asp-items="@(new SelectList(ViewBag.Roles,"Id", "Name"))">
                         <option selected disabled>Select role</option>
                     </select>
                     <span asp-validation-for="@Model.User.RoleId"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.User.Position" class="form-label">Position</label>
+                    <input class="form-control" asp-for="@Model.User.Position">
+                    <span asp-validation-for="@Model.User.Position" class="text-danger"></span>
                 </div>
                 <button type="submit" class="btn btn-primary">Create</button>
                 <a asp-controller="User" asp-action="Index">Back to list</a>

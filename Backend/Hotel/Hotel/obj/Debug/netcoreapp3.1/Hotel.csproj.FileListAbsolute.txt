@@ -204,3 +204,11 @@ C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.
 C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Account\Profile.cshtml.g.cs
 C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Account\Edit.cshtml.g.cs
 C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Account\Lock.cshtml.g.cs
+C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Setting\Index.cshtml.g.cs
+C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Setting\Update.cshtml.g.cs
+C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Account\Error404.cshtml.g.cs
+C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\bin\Debug\netcoreapp3.1\ClosedXML.dll
+C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\bin\Debug\netcoreapp3.1\DocumentFormat.OpenXml.dll
+C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\bin\Debug\netcoreapp3.1\ExcelNumberFormat.dll
+C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\bin\Debug\netcoreapp3.1\System.IO.Packaging.dll
+C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Sub\SendMailAll.cshtml.g.cs

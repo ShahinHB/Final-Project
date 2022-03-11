@@ -22,7 +22,11 @@
                     <span asp-validation-for="@Model.User.RoleId"></span>
                 </div>
                 <input asp-for="User.Id" hidden />
-
+                <div class="mb-3">
+                    <label asp-for="@Model.User.Position" class="form-label">Position</label>
+                    <input class="form-control" asp-for="@Model.User.Position">
+                    <span asp-validation-for="@Model.User.Position" class="text-danger"></span>
+                </div>
                 <button type="submit" class="btn btn-primary btn-user btn-block">
                     Update
                 </button>

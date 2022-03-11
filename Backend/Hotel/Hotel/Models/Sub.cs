@@ -13,5 +13,7 @@ namespace Hotel.Models
         public int Id { get; set; }
 
         public string MailAddress { get; set; }
+
+        public DateTime CreatedDate { get; set; }
     }
 }

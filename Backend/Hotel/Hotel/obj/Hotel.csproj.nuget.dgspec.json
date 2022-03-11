@@ -49,6 +49,10 @@
               "target": "Package",
               "version": "[2.9.3, )"
             },
+            "ClosedXML": {
+              "target": "Package",
+              "version": "[0.95.4, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.13, )"

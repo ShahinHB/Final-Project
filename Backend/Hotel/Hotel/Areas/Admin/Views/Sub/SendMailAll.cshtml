@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"] = "SendMailAll";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <form asp-area="Admin" asp-controller="Sub" asp-action="SendMailAll" method="post">
+                <div class="form-group row mb-5">
+                    <div class="col-sm-12 mb-3">
+                        <textarea class="form-control" rows="10" name="MailText" id="editorid"></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%;">Send</button>
+            </form>
+        </div>
+    </div>
+</div>

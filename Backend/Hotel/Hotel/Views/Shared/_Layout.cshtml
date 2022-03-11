@@ -23,18 +23,20 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
           integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link href="~/assets/JS/jquery-ui-1.13.1.custom/jquery-ui.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="~/assets/css/style.min.css">
     <link href="~/Areas/assets/plugins/sweet-alert/sweetalert.min.css" rel="stylesheet" />
+    <link href="~/Areas/assets/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Areas/assets/js/pages/sweet-alert/sweet-alert-data.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <script src="~/Areas/assets/plugins/sweet-alert/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="~/assets/css/style.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/assets/css/grid.css" asp-append-version="true">
+
 </head>
 <body style="background-image: url(/Uploads/@result.ImageName);">
     <header>
         <div class="container">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12"> 
                     <ul>
                         <li>
                             <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -70,9 +72,9 @@
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-10">
+                <div class="col-10 col-lg-10 col-sm-12">
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-4 col-lg-4 col-md-6 col-sm-6 col-xs-12">
                             <div class="contact">
                                 <h1>
                                     <a href="#">
@@ -90,7 +92,7 @@
                                 @*<span>Email:</span> <a href="mailto:shahinhb@code.edu.az">@Model.Setting.Email</a>*@
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-4 col-lg-4 col-md-6 col-sm-6 col-xs-12">
                             <div class="follow">
                                 <h1>
                                     Follow Us
@@ -110,11 +112,11 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
                             <div class="subscribe">
                                 <h1>Subscribe for Updates & Offers</h1>
                                 <div class="seperator">
-                                    <div>
+                                    <div> 
                                     </div>
                                 </div>
                                 <form asp-area="Admin" asp-controller="Sub" asp-action="Subscribe" id="subscribies" method="post">
@@ -161,7 +163,7 @@
                     success: function (response) {
                         if (response.status == true) {
                             Swal.fire(
-                                'Thank you for message!',
+                                'Thank you for subscribing!',
                                 'Your have succesfully subscribed to our list ',
                                 'success'
                             )

@@ -7,7 +7,7 @@
 <section id="room">
     <div class="container">
         <div class="row">
-            <div class="col-10">
+            <div class="col-10 col-lg-10 col-sm-12 col-xs-12">
                 <div class="title">
                     <a asp-area="" asp-controller="Apartment" asp-action="Index">
                         <i class="fas fa-arrow-left"></i>
@@ -15,7 +15,7 @@
                     <h1>Junior Suite</h1>
                 </div>
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-8 col-lg-8 col-sm-12 col-xs-12">
                         <div class="slider">
                             <ul id="imageGallery">
 
@@ -82,21 +82,21 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-4 col-lg-4 col-sm-12 col-xs-12">
                         <div class="book">
                             <span>From</span>
                             <p>$@Model.Apartment.Price</p>
                             <span>Per Night</span>
                             <form asp-area="" asp-controller="Apartment" asp-action="CreateHelper" method="post">
-                                <div asp-validation-summary="All" class="text-danger"></div>
                                 <input asp-for="@Model.Reservation.StartDate" type="text" class="datepicker" id="txtFromDate" autocomplete="off" required placeholder="Check In">
                                 <input asp-for="@Model.Reservation.EndDate" type="text" class="datepicker" autocomplete="off" id="txtToDate" required placeholder="Check Out">
                                 <input asp-for="@Model.Reservation.AdultsCount" min="0" max="@Model.Apartment.Limit" type="number" required>
                                 <input asp-for="@Model.Reservation.KidsCount" min="0" max="@Model.Apartment.Limit" type="number" required>
                                 <input type="hidden" asp-for="@Model.Reservation.ApartmentId" value="@Model.Apartment.Id" />
+                                <input type="hidden" asp-for="@Model.Apartment.Id"/>
                                 <input type="hidden" asp-for="@Model.Apartment.Title" value="@Model.Apartment.Title" />
                                 <input type="hidden" asp-for="@Model.Apartment.Price" value="@Model.Apartment.Price" />
-                                <div asp-validation-summary="All" class="text-danger"></div>
+                                <p class="text-danger" style="font-size:14px">@TempData["Error"]</p>
                                 <button type="submit">Book Now</button>
                             </form>
                         </div>
@@ -117,33 +117,21 @@
     $(document).ready(function () {
 
 
-        var daysToAdd = 1;
-        $("#txtFromDate").datepicker({
-            minDate: new Date(),
-            onSelect: function (selected) {
-                var dtMax = new Date(selected);
-                dtMax.setDate(dtMax.getDate() + daysToAdd);
-                var dd = dtMax.getDate() - 1;
-                var mm = dtMax.getMonth() + 2;
-                var y = dtMax.getFullYear();
-                var dtFormatted = mm + '/' + dd + '/' + y;
-                $("#txtToDate").datepicker("option", "minDate", dtFormatted);
-            },
-            dateFormat: 'dd/mm/yy'
+        $('#txtToDate').datepicker({
+            dateFormat: "dd/mm/yy"
         });
-      
 
-        $("#txtToDate").datepicker({
-            onSelect: function (selected) {
-                var dtMax = new Date(selected);
-                dtMax.setDate(dtMax.getDate() - daysToAdd);
-                //var dd = dtMax.getDate();       
-                //var mm = dtMax.getMonth();
-                //var y = dtMax.getFullYear();
-                //var dtFormatted = mm + '/' + dd + '/' + y;
-                //$("#txtFromDate").datepicker("option", "maxDate", dtFormatted)
-            },
-            dateFormat: 'dd/mm/yy'
+        $("#txtFromDate").datepicker({
+            dateFormat: "dd/mm/yy",
+            minDate: new Date(),
+            onSelect: function (date) {
+                var date1 = $('#txtFromDate').datepicker('getDate');
+                var date = new Date(Date.parse(date1));
+                date.setDate(date.getDate() + 1);
+                var newDate = date.toDateString();
+                newDate = new Date(Date.parse(newDate));
+                $('#txtToDate').datepicker("option", "minDate", newDate);
+            }
         });
 
 

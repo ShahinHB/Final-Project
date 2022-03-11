@@ -43,6 +43,7 @@
                         <p class="text-muted mb-4">@role</p>
                         <form asp-area="Admin" asp-controller="Account" asp-action="ProfilePhoto" method="post" enctype="multipart/form-data">
                             <input type="file" asp-for="@Model.ImageFile" />
+                            <input type="hidden" asp-for="@Model.Id" />
                             <button class="btn btn-primary" type="submit">Save</button>
                         </form>
                         <style>

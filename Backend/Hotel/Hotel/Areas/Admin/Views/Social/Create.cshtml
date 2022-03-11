@@ -18,6 +18,11 @@
                     <input class="form-control" asp-for="@Model.Icon">
                     <span asp-validation-for="@Model.Icon" class="text-danger"></span>
                 </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.Link" class="form-label">Price</label>
+                    <input class="form-control" asp-for="@Model.Link">
+                    <span asp-validation-for="@Model.Link" class="text-danger"></span>
+                </div>
                 <button type="submit" class="btn btn-primary">Create</button>
                 <a asp-area="Admin" asp-controller="Social" asp-action="Index">Back to list</a>
             </form>

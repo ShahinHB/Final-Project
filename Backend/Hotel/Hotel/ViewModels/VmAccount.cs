@@ -10,7 +10,7 @@ namespace Hotel.ViewModels
     {
         public string UserName { get; set; }
         public string Password { get; set; }
-
+        public string Position { get; set; }
         public AdminPanelUser User { get; set; }
     }
 }

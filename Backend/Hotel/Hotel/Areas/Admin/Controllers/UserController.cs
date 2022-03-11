@@ -48,6 +48,7 @@ namespace Hotel.Areas.Admin.Controllers
                 AdminPanelUser newUser = new AdminPanelUser()
                 {
                     UserName = model.UserName,
+                    Position = model.Position
                 };
                 var result = await _userManager.CreateAsync(newUser, model.Password);
                 if (result.Succeeded)
@@ -82,7 +83,7 @@ namespace Hotel.Areas.Admin.Controllers
             {
                 AdminPanelUser user = _context.AdminPanelUsers.Find(model.User.Id);
                 user.UserName = model.User.UserName;
-
+                user.Position = model.User.Position;
                 IdentityUserRole<string> userRole = _context.UserRoles.FirstOrDefault(u => u.UserId == model.User.Id);
                 if (userRole != null)
                 {

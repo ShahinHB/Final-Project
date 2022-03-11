@@ -32,7 +32,7 @@
                                 <td>@item.Title</td>
                                 <td>@item.Subtitle</td>
                                 <td>
-                                    <img src="~/Uploads/@item.ImageName" style="width: 100px; height: 100px;" alt="Alternate Text" />
+                                    <img src="~/Uploads/@item.ImageName" style="object-fit:contain; height: 100px;" alt="Alternate Text" />
                                 </td>
                                 <td>
                                     <a class="btn btn-success" asp-area="Admin" asp-controller="Page" asp-action="Update" asp-route-id="@item.Id">Update</a>

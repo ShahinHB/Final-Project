@@ -4,7 +4,13 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-
+<style>
+    @@media print{
+        #myToolBar{
+            display: none;
+        }
+    }
+</style>
 <div class="row">
     <div class="col-md-12">
         <div class="card card-box">
@@ -18,7 +24,7 @@
             <div class="card-body ">
                 <div class="row p-b-20" style="display:flex; justify-content:right">
                     <div class="col-md-6 col-sm-6 col-6">
-                        <div class="btn-group pull-right">
+                        <div class="btn-group pull-right" id="myToolBar">
                             <a class="btn deepPink-bgcolor  btn-outline dropdown-toggle"
                                data-toggle="dropdown">
                                 Tools
@@ -32,7 +38,7 @@
                                 </li>
                                 
                                 <li>
-                                    <a href="javascript:;">
+                                    <a asp-area="Admin" asp-controller="Booking" asp-action="DownloadToExcel">
                                         <i class="fa fa-file-excel-o"></i> Export to Excel
                                     </a>
                                 </li>

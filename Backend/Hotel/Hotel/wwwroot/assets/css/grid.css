@@ -1,0 +1,140 @@
+﻿@media (max-width: 576px) {
+    .col-xs-1 {
+        width: 8.33333333% !important;
+    }
+
+    .col-xs-2 {
+        width: 16.66666666% !important;
+    }
+
+    .col-xs-3 {
+        width: 25% !important;
+    }
+
+    .col-xs-4 {
+        width: 33.33333333% !important;
+    }
+
+    .col-xs-5 {
+        width: 41.66666666% !important;
+    }
+
+    .col-xs-6 {
+        width: 50%;
+    }
+
+    .col-xs-7 {
+        width: 58.33333333% !important;
+    }
+
+    .col-xs-8 {
+        width: 66.66666666% !important;
+    }
+
+    .col-xs-9 {
+        width: 75% !important;
+    }
+
+    .col-xs-10 {
+        width: 83.33333333% !important;
+    }
+
+    .col-xs-11 {
+        width: 91.66666666% !important;
+    }
+
+    .col-xs-12 {
+        width: 100% !important;
+    }
+
+    header ul li:nth-child(2) {
+        display: none !important;
+    }
+
+    header ul li {
+        margin-right: 50px !important;
+    }
+
+    .col-xs-0 {
+        display: none !important;
+    }
+
+    .feedback .col-xs-12 {
+        padding: 30px 0 !important;
+    }
+
+    #rooms form {
+        display: block !important;
+    }
+
+        #rooms form button {
+            width: 100% !important;
+        }
+    #rooms .image{
+        display: none;
+    }
+
+    #rooms .description {
+        width: 100%;
+    }
+        #rooms .description .info {
+            width: 60% !important;
+        }
+
+        #rooms .description .price {
+            width: 40% !important;
+        }
+}
+
+@media (min-width: 576px) and (max-width:768px) {
+    .feedback .col-4 {
+        display: none !important;
+    }
+
+    header ul li {
+        margin-right: 50px !important;
+    }
+
+    #rooms form {
+        display: block !important;
+    }
+
+        #rooms form button {
+            margin-top: 20px;
+            width: 83% !important;
+        }
+
+    #rooms .image {
+        display: none;
+    }
+
+    #rooms .description {
+        width: 100% !important;
+    }
+    #rooms .description .info{
+        width: 60% !important;
+    }
+        #rooms .description .price {
+            width: 40% !important;
+        }
+        #order button{
+            width: 100% !important;
+        }
+}
+
+@media (min-width: 768px) and (max-width:992px){
+    #rooms .image {
+        display: none;
+    }
+
+    #rooms .description {
+        width: 100% !important;
+    }
+    #rooms .description .info {
+        width: 70% !important;
+    }
+
+    #rooms .description .price {
+        width: 30% !important;
+    }
+}

@@ -9,10 +9,10 @@
 @*//Apartment*@
 <div class="container">
     <div class="row">
-        <div class="col-lg-12">
+        @*<div class="col-lg-12">
             <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="About" asp-action="CreateApartment">Create</a>
         </div>
-        <hr />
+        <hr />*@
 
         <div class="col-lg-12 mt-3">
             <table class="table">
@@ -30,7 +30,9 @@
                             i++;
                             <tr>
                                 <td>@item.Title</td>
-                                <td>@item.Content</td>
+                                <td>
+                                    @Html.Raw(item.Content)
+                                </td>
                                 <td>
                                     <a class="btn btn-success" asp-area="Admin" asp-controller="About" asp-action="UpdateApartment" asp-route-id="@item.Id">Update</a>
                                     <a class="btn btn-danger" asp-area="Admin" asp-controller="About" asp-action="DeleteApartment" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">Delete</a>
@@ -49,10 +51,10 @@
 @*Games*@
 <div class="container">
     <div class="row">
-        <div class="col-lg-12">
+        @*<div class="col-lg-12">
             <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="About" asp-action="CreateGames">Create</a>
         </div>
-        <hr />
+        <hr />*@
 
         <div class="col-lg-12 mt-3">
             <table class="table">
@@ -70,7 +72,9 @@
                             i++;
                             <tr>
                                 <td>@item.Title</td>
-                                <td>@item.Content</td>
+                                <td>
+                                @Html.Raw(item.Content)
+                                </td>
                                 <td>
                                     <a class="btn btn-success" asp-area="Admin" asp-controller="About" asp-action="UpdateGames" asp-route-id="@item.Id">Update</a>
                                     <a class="btn btn-danger" asp-area="Admin" asp-controller="About" asp-action="DeleteGames" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">Delete</a>
@@ -89,10 +93,10 @@
 @*City*@
 <div class="container">
     <div class="row">
-        <div class="col-lg-12">
+        @*<div class="col-lg-12">
             <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="About" asp-action="CreateCity">Create</a>
         </div>
-        <hr />
+        <hr />*@
 
         <div class="col-lg-12 mt-3">
             <table class="table">
@@ -129,10 +133,10 @@
 @*Feedback*@
 <div class="container">
     <div class="row">
-        <div class="col-lg-12">
+        @*<div class="col-lg-12">
             <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="About" asp-action="CreateFeedback">Create</a>
         </div>
-        <hr />
+        <hr />*@
 
         <div class="col-lg-12 mt-3">
             <table class="table">
@@ -170,10 +174,10 @@
 @*Location*@
 <div class="container">
     <div class="row">
-        <div class="col-lg-12">
+        @*<div class="col-lg-12">
             <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="About" asp-action="CreateLocation">Create</a>
         </div>
-        <hr />
+        <hr />*@
 
         <div class="col-lg-12 mt-3">
             <table class="table">

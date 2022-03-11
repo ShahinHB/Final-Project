@@ -65,7 +65,7 @@ namespace Hotel.Areas.Admin.Controllers
             {
                 _context.Aboutapartments.Update(model);
                 _context.SaveChanges();
-                return RedirectToAction("Apartment");
+                return RedirectToAction("Index","About");
             }
             ModelState.AddModelError("", "All section is required");
             return View(model);
@@ -110,7 +110,7 @@ namespace Hotel.Areas.Admin.Controllers
             {
                 _context.AboutCities.Update(model);
                 _context.SaveChanges();
-                return RedirectToAction("City");
+                return RedirectToAction("Index","About");
             }
             ModelState.AddModelError("", "All section is required");
             return View(model);
@@ -138,7 +138,7 @@ namespace Hotel.Areas.Admin.Controllers
             {
                 _context.AboutGames.Add(model);
                 _context.SaveChanges();
-                return RedirectToAction("Games");
+                return RedirectToAction("Index", "About");
             }
             ModelState.AddModelError("", "All section is required");
             return View(model);
@@ -154,7 +154,7 @@ namespace Hotel.Areas.Admin.Controllers
             {
                 _context.AboutGames.Update(model);
                 _context.SaveChanges();
-                return RedirectToAction("Games");
+                return RedirectToAction("Index", "About");
             }
             ModelState.AddModelError("", "All section is required");
             return View(model);
@@ -198,7 +198,7 @@ namespace Hotel.Areas.Admin.Controllers
             {
                 _context.Locations.Update(model);
                 _context.SaveChanges();
-                return RedirectToAction("Location");
+                return RedirectToAction("Index", "About");
             }
             ModelState.AddModelError("", "All section is required");
             return View(model);
@@ -209,12 +209,12 @@ namespace Hotel.Areas.Admin.Controllers
             Location model = _context.Locations.Find(id);
             _context.Locations.Remove(model);
             _context.SaveChanges();
-            return RedirectToAction("Location");
+            return RedirectToAction("Index", "About");
         }
 
 
         //Feedback
-    
+
         public IActionResult CreateFeedback()
         {
             return View();
@@ -227,7 +227,7 @@ namespace Hotel.Areas.Admin.Controllers
             {
                 _context.Feedbacks.Add(model);
                 _context.SaveChanges();
-                return RedirectToAction("Feedback");
+                return RedirectToAction("Index", "About");
             }
             ModelState.AddModelError("", "All section is required");
             return View(model);
@@ -243,7 +243,7 @@ namespace Hotel.Areas.Admin.Controllers
             {
                 _context.Feedbacks.Update(model);
                 _context.SaveChanges();
-                return RedirectToAction("Feedback");
+                return RedirectToAction("Index", "About");
             }
             ModelState.AddModelError("", "All section is required");
             return View(model);
@@ -254,7 +254,7 @@ namespace Hotel.Areas.Admin.Controllers
             Feedback model = _context.Feedbacks.Find(id);
             _context.Feedbacks.Remove(model);
             _context.SaveChanges();
-            return RedirectToAction("Feedback");
+            return RedirectToAction("Index", "About");
         }
 
     }

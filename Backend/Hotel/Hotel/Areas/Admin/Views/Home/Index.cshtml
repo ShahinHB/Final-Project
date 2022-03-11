@@ -27,12 +27,10 @@
                 <div class="info-box-content">
                     <span class="info-box-text">Orders</span>
                     <span class="info-box-number">@Model.Reservations.Count</span>
-                    <div class="progress">
+                    <div class="progress" style="visibility:hidden">
                         <div class="progress-bar width-60"></div>
                     </div>
-                    <span class="progress-description">
-                        60% Increase in 28 Days
-                    </span>
+                    
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -52,12 +50,10 @@
                 <div class="info-box-content">
                     <span class="info-box-text">New Booking</span>
                     <span class="info-box-number">@result</span>
-                    <div class="progress">
+                    <div class="progress" style="visibility:hidden">
                         <div class="progress-bar width-40"></div>
                     </div>
-                    <span class="progress-description">
-                        40% Increase in 28 Days
-                    </span>
+                   
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -72,12 +68,9 @@
                 <div class="info-box-content">
                     <span class="info-box-text">Workers</span>
                     <span class="info-box-number">@_context.AdminPanelUsers.ToList().Count</span>
-                    <div class="progress">
+                    <div class="progress" style="visibility:hidden">
                         <div class="progress-bar width-80"></div>
                     </div>
-                    <span class="progress-description">
-                        80% Increase in 28 Days
-                    </span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -99,12 +92,9 @@
                 <div class="info-box-content">
                     <span class="info-box-text">Total Earning</span>
                     <span class="info-box-number">@Sum</span><span>$</span>
-                    <div class="progress">
+                    <div class="progress" style="visibility:hidden">
                         <div class="progress-bar width-60"></div>
                     </div>
-                    <span class="progress-description">
-                        60% Increase in 28 Days
-                    </span>
                 </div>
                 <!-- /.info-box-content -->
             </div>

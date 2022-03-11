@@ -6,9 +6,9 @@
 <section id="order">
     <div class="container">
         <div class="row">
-            <div class="col-10">
+            <div class="col-10 col-lg-10 col-sm-12">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-8 col-lg-8 col-sm-12 col-xs-12">
                         <div class="details">
                             <div class="title">
                                 <h2>Guest Details</h2>
@@ -298,14 +298,24 @@
                                         <label class="form-label" style="display: block;">Special Requests</label>
                                         <textarea class="form-control" rows="3" asp-for="@Model.Reservation.SpecialRequest"></textarea>
                                     </div>
-                                    <div class="col-12 mb-3">
+                                    <div class="col-12 mb-3 col-xs-12">
                                         <button type="submit">Continue to Check out</button>
                                     </div>
                                 </div>
+                                <p>@TempData["Error"]</p>
                             </form>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <style>
+
+                        @@media (max-width: 576px) {
+                            #order button {
+                                width: 100% !important;
+                            }
+                        }
+                        
+                    </style>
+                    <div class="col-4 col-lg-4 col-sm-12 col-xs-12">
                         <div class="summary">
                             <h2>
                                 Order Summary

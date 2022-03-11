@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 
 
@@ -62,6 +64,7 @@ namespace Hotel.Areas.Admin.Controllers
 
             Sub subscribe = new Sub();
             subscribe.MailAddress = email;
+            subscribe.CreatedDate = DateTime.Now;
             _context.Subs.Add(subscribe);
             _context.SaveChanges();
 
@@ -75,6 +78,37 @@ namespace Hotel.Areas.Admin.Controllers
             Sub sub = _context.Subs.Find(id);
             _context.Subs.Remove(sub);
             _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult SendMailAll()
+        {
+            return View(_context.Subs.ToList());
+        }
+
+        [HttpPost]
+        public IActionResult SendMailAll(string MailText)
+        {
+            List<Sub> subscribes = _context.Subs.ToList();
+
+            foreach (var item in subscribes)
+            {
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress("apartmentsbookingrio@gmail.com", "Rio Apartments");
+                mail.To.Add(item.MailAddress);
+                mail.Body = MailText;
+                mail.IsBodyHtml = true;
+                mail.Subject = "Reklam";
+
+                SmtpClient smtpClient = new SmtpClient();
+                smtpClient.Host = "smtp.gmail.com";
+                smtpClient.EnableSsl = true;
+                smtpClient.Port = 587;
+                smtpClient.Credentials = new NetworkCredential("apartmentsbookingrio@gmail.com", "adidas123456adidas");
+
+                smtpClient.Send(mail);
+            }
+
             return RedirectToAction("Index");
         }
     }

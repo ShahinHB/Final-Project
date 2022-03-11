@@ -3,39 +3,82 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="Sub" asp-action="Create">Create</a>
-        </div>
-        <hr />
 
-        <div class="col-lg-12 mt-3">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Mail Address</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @{ int i = 0;
-                        foreach (var item in Model)
-                        {
-                            i++;
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-box">
+            <div class="card-head">
+                <header>All Subscribers</header>
+                <div class="col-lg-12">
+                    <a asp-area="Admin" asp-controller="Sub" asp-action="sendmailall" class="btn btn-success">Send mail All</a>
+                </div>
+            </div>
+            <div class="card-body ">
+                <div class="row p-b-20" style="display:flex; justify-content:right">
+                    <div class="col-md-6 col-sm-6 col-6">
+                        <div class="btn-group pull-right" id="myToolBar">
+                            <a class="btn deepPink-bgcolor  btn-outline dropdown-toggle"
+                               data-toggle="dropdown">
+                                Tools
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <li>
+                                    <a onclick="window.print()">
+                                        <i class="fa fa-print"></i> Print
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a asp-area="Admin" asp-controller="Booking" asp-action="DownloadToExcel">
+                                        <i class="fa fa-file-excel-o"></i> Export to Excel
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-scrollable">
+                    <table class="table table-hover table-checkable order-column full-width"
+                           id="example4">
+                        <thead>
                             <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Mail Address</th>
+                                <th scope="col">Join</th>
+                                <th scope="col"></th>>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @{
+                                int i = 0;
+                                @foreach (var item in Model)
+                                {
+                                    i++;
+                            <tr class="odd gradeX">
                                 <th scope="row">@i</th>
                                 <td>@item.MailAddress</td>
                                 <td>
-                                    <a class="btn btn-danger" asp-area="Admin" asp-controller="Sub" asp-action="DeleteSub" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">Delete</a>
+                                </td>
+                                <td class="center">
+
+                                    <a class="btn btn-tbl-delete btn-xs" asp-area="Admin" asp-controller="Sub" asp-action="DeleteSub" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">
+                                        <i class="fa fa-trash-o "></i>
+                                    </a>
                                 </td>
                             </tr>
-                        }
-                    }
-                </tbody>
-            </table>
 
+                                }
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+
+

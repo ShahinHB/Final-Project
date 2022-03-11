@@ -23,7 +23,7 @@
                             {
                                 <tr>
                                     <td>
-                                        <img src="~/Uploads/@item.Name" alt="Alternate Text">
+                                        <img src="~/Uploads/@item.Name" alt="Alternate Text" style="object-fit:contain; height: 100px;">
                                     </td>
                                     <td>
                                         <a class="btn btn-danger" asp-area="Admin" asp-controller="Apartment" asp-action="DeleteImage" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">Delete</a>

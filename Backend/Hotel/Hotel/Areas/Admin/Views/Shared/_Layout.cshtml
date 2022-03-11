@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="~/Areas/assets/css/material_style.css">
     <!-- animation -->
     <link href="~/Areas/assets/css/pages/animate_page.css" rel="stylesheet">
+
     <!-- Template Styles -->
     <link href="~/Areas/assets/css/plugins.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Areas/assets/css/style.css" rel="stylesheet" type="text/css" />
@@ -75,7 +76,7 @@
                 <div class="top-menu">
                     <ul class="nav navbar-nav pull-right">
                         @{
-                            var imageName = _context.AdminPanelUsers.FirstOrDefault(a=>a.Id == userManager.GetUserId(User)).Image;
+                            var imageName = _context.AdminPanelUsers.FirstOrDefault(a => a.Id == userManager.GetUserId(User)).Image;
                             var Name = _context.AdminPanelUsers.FirstOrDefault(a => a.Id == userManager.GetUserId(User)).Name;
                             var Surname = _context.AdminPanelUsers.FirstOrDefault(a => a.Id == userManager.GetUserId(User)).Surname;
                             var position = _context.AdminPanelUsers.FirstOrDefault(a => a.Id == userManager.GetUserId(User)).Position;
@@ -147,17 +148,9 @@
                                         <div class="profile-usertitle-job"> @position </div>
                                     </div>
                                     <div class="sidebar-userpic-btn">
-                                        <a class="tooltips" href="user_profile.html" data-placement="top"
+                                        <a class="tooltips" asp-area="Admin" asp-controller="Account" asp-action="Profile" asp-route-id="@userManager.GetUserId(User)" data-placement="top"
                                            data-original-title="Profile">
                                             <i class="material-icons">person_outline</i>
-                                        </a>
-                                        <a class="tooltips" href="email_inbox.html" data-placement="top"
-                                           data-original-title="Mail">
-                                            <i class="material-icons">mail_outline</i>
-                                        </a>
-                                        <a class="tooltips" href="chat.html" data-placement="top"
-                                           data-original-title="Chat">
-                                            <i class="material-icons">chat</i>
                                         </a>
                                         <a class="tooltips" asp-area="Admin" asp-controller="Account" asp-action="Logout" data-placement="top"
                                            data-original-title="Logout">
@@ -266,7 +259,7 @@
                             <li class="nav-item start">
                                 <a asp-area="Admin" asp-controller="User" asp-action="Index" class="nav-link nav-toggle">
                                     <i class="material-icons">account_box</i>
-                                    <span class="title">Workers</span>
+                                    <span class="title">Staff</span>
                                     <span class="selected"></span>
                                 </a>
                             </li>
@@ -274,6 +267,13 @@
                                 <a asp-area="Admin" asp-controller="Account" asp-action="Roles" class="nav-link nav-toggle">
                                     <i class="material-icons">cancel</i>
                                     <span class="title">Roles</span>
+                                    <span class="selected"></span>
+                                </a>
+                            </li>
+                            <li class="nav-item start">
+                                <a asp-area="Admin" asp-controller="Setting" asp-action="Index" class="nav-link nav-toggle">
+                                    <i class="material-icons">subtitles</i>
+                                    <span class="title">Main Information</span>
                                     <span class="selected"></span>
                                 </a>
                             </li>
@@ -718,6 +718,9 @@
     <script src="~/Areas/assets/plugins/morris/morris.min.js"></script>
     <script src="~/Areas/assets/plugins/morris/raphael-min.js"></script>
     <script src="~/Areas/assets/js/pages/chart/morris/morris_home_data.js"></script>
+    <!-- CK-Editor -->
+    <script src="~/Areas/assets/plugins/ckeditor/ckeditor.js"></script>
+    <script src="//cdn.ckeditor.com/4.17.2/standard/ckeditor.js"></script>
     <!-- end js include path -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
@@ -725,6 +728,7 @@
         $(document).ready(function () {
             $('.selectTwo').select2();
         });
+        CKEDITOR.replace("editorid");
     </script>
 </body>
 

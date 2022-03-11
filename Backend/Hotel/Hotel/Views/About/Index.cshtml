@@ -11,8 +11,8 @@
             <div class="col-10">
                 <div class="city">
                     <div class="row">
-                        <div class="col-4">
-                            <div class="title">
+                        <div class="col-4 col-lg-4 col-sm-12 col-xs-12">
+                            <div class="title" style="padding:50px">
                                 @if (Model.AboutCity != null)
                                 {
                                     <h2>
@@ -25,19 +25,20 @@
                                 }
                             </div>
                         </div>
-                        <div class="col-8">
-                            <div class="content">
+                        <div class="col-8 col-lg-8 col-sm-12 col-xs-12">
+                            <div class="content" style="padding-top:30px;">
                                 @if (Model.AboutCity != null)
                                 {
                                     <p>
-                                        @Model.AboutCity.Content
+                                        @Html.Raw(Model.AboutCity.Content)
                                     </p>
                                 }
                                 else
                                 {
                                     <p> Soon </p>
                                 }
-                                <a href="#">View Map</a>
+                                <a asp-area="" asp-controller="Contact" asp-action="Index">View Map</a>
+
                             </div>
 
                         </div>
@@ -45,8 +46,8 @@
                 </div>
                 <div class="games">
                     <div class="row">
-                        <div class="col-4">
-                            <div class="title">
+                        <div class="col-4 col-lg-4 col-sm-12 col-xs-12">
+                            <div class="title" style="padding:50px; padding-right:60px">
                                 @if (Model.AboutGames != null)
                                 {
                                     <h2>
@@ -60,12 +61,12 @@
 
                             </div>
                         </div>
-                        <div class="col-8">
-                            <div class="content">
+                        <div class="col-8 col-lg-8 col-sm-12 col-xs-12">
+                            <div class="content" style="padding-top:30px;">
                                 @if (Model.AboutGames != null)
                                 {
                                     <p>
-                                        @Model.AboutGames.Content
+                                        @Html.Raw(Model.AboutGames.Content)
                                     </p>
                                 }
                                 else
@@ -73,14 +74,15 @@
                                     <p> Soon </p>
                                 }
 
-                              
-                                <a href="#">View Map</a>
+
+                                <a href="https://olympics.com/en/olympic-games/rio-2016">www.rio2016.com</a>
+
                             </div>
 
                         </div>
                     </div>
                 </div>
-                <img src="assets/media/rio.jpg" alt="">
+                <img src="assets/media/rio.jpg" style="max-width: 100%" alt="">
             </div>
         </div>
     </div>
