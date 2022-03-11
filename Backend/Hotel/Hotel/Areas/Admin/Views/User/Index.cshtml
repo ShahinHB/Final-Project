@@ -43,7 +43,8 @@
                                     @role
                                 </td>
                                 <td>
-                                    <a class="btn btn-success" asp-controller="User" asp-action="UpdateUser" asp-route-id="@item.Id">Update</a>
+                                    <a class="btn btn-success" asp-area="Admin" asp-controller="User" asp-action="UpdateUser" asp-route-id="@item.Id">Update</a>
+                                    <a class="btn btn-danger" asp-area="Admin" asp-controller="User" asp-action="DeleteUser" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">Delete</a>
                                 </td>
                             </tr>
                         }

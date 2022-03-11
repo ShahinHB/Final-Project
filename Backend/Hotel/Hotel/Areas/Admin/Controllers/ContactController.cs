@@ -33,5 +33,16 @@ namespace Hotel.Areas.Admin.Controllers
             _context.SaveChanges();
             return RedirectToAction("List");
         }
+
+        public IActionResult Confirm(int id)
+        {
+            Message mes = _context.Messages.Find(id);
+            mes.IsReplied = true;
+           
+
+            _context.Messages.Update(mes);
+            _context.SaveChanges();
+            return RedirectToAction("List");
+        }
     }
 }

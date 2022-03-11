@@ -212,3 +212,5 @@ C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\bin\Debug\netcoreapp3.
 C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\bin\Debug\netcoreapp3.1\ExcelNumberFormat.dll
 C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\bin\Debug\netcoreapp3.1\System.IO.Packaging.dll
 C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Sub\SendMailAll.cshtml.g.cs
+C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Views\Apartment\Success.cshtml.g.cs
+C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Views\Apartment\GetReserves.cshtml.g.cs

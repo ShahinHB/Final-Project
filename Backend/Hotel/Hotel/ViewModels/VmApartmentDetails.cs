@@ -10,6 +10,7 @@ namespace Hotel.ViewModels
     {
         public Apartment Apartment { get; set; }
         public Reservation Reservation { get; set; }
+        public List<Reservation> Reservations { get; set; }
         public int DifferDate { get; set; }
 
         //public DateTime StartDate { get; set; }

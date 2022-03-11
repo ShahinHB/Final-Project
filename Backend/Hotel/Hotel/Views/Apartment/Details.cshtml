@@ -99,6 +99,8 @@
                                 <p class="text-danger" style="font-size:14px">@TempData["Error"]</p>
                                 <button type="submit">Book Now</button>
                             </form>
+
+                            <a asp-area="" asp-controller="Apartment" asp-action="GetReserves" asp-route-id="@Model.Apartment.Id" class="btn btn-primary" style="margin-top:40px; font-size:14px;">Reserved Dates</a>
                         </div>
                     </div>
                 </div>

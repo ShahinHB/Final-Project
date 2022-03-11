@@ -48,7 +48,7 @@ namespace Hotel.Areas.Admin.Controllers
                 AdminPanelUser newUser = new AdminPanelUser()
                 {
                     UserName = model.UserName,
-                    Position = model.Position
+                    Position = model.Position,
                 };
                 var result = await _userManager.CreateAsync(newUser, model.Password);
                 if (result.Succeeded)
@@ -99,6 +99,12 @@ namespace Hotel.Areas.Admin.Controllers
             }
             return View(model);
         }
-
+        public IActionResult DeleteUser(string id)
+        {
+            AdminPanelUser model = _context.AdminPanelUsers.Find(id);
+            _context.AdminPanelUsers.Remove(model);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

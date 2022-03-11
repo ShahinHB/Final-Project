@@ -42,6 +42,7 @@ namespace Hotel.Controllers
         {
             VmApartmentDetails model = new VmApartmentDetails
             {
+                Reservations = _context.Reservations.ToList(),
                 Socials = _context.Socials.ToList(),
                 Setting = _context.Settings.FirstOrDefault(),
                 Apartment = _context.Apartments.Include(i => i.ApartmentImages).Include(m => m.ApartmentToAmenities).
@@ -54,33 +55,42 @@ namespace Hotel.Controllers
         public IActionResult CreateHelper(VmApartmentDetails model)
         {
             bool check = true;
-            if (model.Reservation.StartDate != null && model.Reservation.EndDate != null /*&& (model.Reservation.KidsCount + model.Reservation.AdultsCount) > 0 && (model.Reservation.KidsCount + model.Reservation.AdultsCount < model.Apartment.Limit)*/)
+            if (model.Reservation.StartDate != null && model.Reservation.EndDate != null)
             {
-                foreach (var b in _context.Reservations.Where(r=>r.Id == model.Reservation.ApartmentId))
+                if ((model.Reservation.KidsCount + model.Reservation.AdultsCount) > 0 && (model.Reservation.KidsCount + model.Reservation.AdultsCount < model.Apartment.Limit))
                 {
-                    if ((b.StartDate < model.Reservation.StartDate && model.Reservation.StartDate < b.EndDate) || (b.StartDate > model.Reservation.StartDate && b.StartDate < model.Reservation.EndDate) || (b.EndDate > model.Reservation.StartDate && model.Reservation.EndDate > b.EndDate) || (b.StartDate < model.Reservation.EndDate && model.Reservation.EndDate < b.EndDate) || (b.StartDate < model.Reservation.StartDate && model.Reservation.EndDate < b.EndDate))
+                    foreach (var b in _context.Reservations.Where(r => r.ApartmentId == model.Reservation.ApartmentId))
                     {
-                        check = false;
+                        if ((b.StartDate < model.Reservation.StartDate && model.Reservation.StartDate < b.EndDate) || (b.StartDate > model.Reservation.StartDate && b.StartDate < model.Reservation.EndDate) || (b.EndDate > model.Reservation.StartDate && model.Reservation.EndDate > b.EndDate) || (b.StartDate < model.Reservation.EndDate && model.Reservation.EndDate < b.EndDate) || (b.StartDate < model.Reservation.StartDate && model.Reservation.EndDate < b.EndDate))
+                        {
+                            check = false;
+                        }
                     }
-                }
-                if (check)
-                {
-                    TempData["AdultCount"] = model.Reservation.AdultsCount;
-                    TempData["KidsCount"] = model.Reservation.KidsCount;
-                    TempData["StartDate"] = model.Reservation.StartDate;
-                    TempData["EndDate"] = model.Reservation.EndDate;
-                    TempData["Title"] = model.Apartment.Title;
-                    TempData["Apartment"] = model.Reservation.ApartmentId;
-                    model.DifferDate = (int)((model.Reservation.EndDate - model.Reservation.StartDate).TotalDays);
-                    TempData["DateDiffer"] = model.DifferDate;
-                    TempData["Amount"] = (int)model.DifferDate * (int)model.Apartment.Price;
-                    return RedirectToAction("Checkout");
+                    if (check)
+                    {
+                        TempData["AdultCount"] = model.Reservation.AdultsCount;
+                        TempData["KidsCount"] = model.Reservation.KidsCount;
+                        TempData["StartDate"] = model.Reservation.StartDate;
+                        TempData["EndDate"] = model.Reservation.EndDate;
+                        TempData["Title"] = model.Apartment.Title;
+                        TempData["Apartment"] = model.Reservation.ApartmentId;
+                        model.DifferDate = (int)((model.Reservation.EndDate - model.Reservation.StartDate).TotalDays);
+                        TempData["DateDiffer"] = model.DifferDate;
+                        TempData["Amount"] = (int)model.DifferDate * (int)model.Apartment.Price;
+                        return RedirectToAction("Checkout");
+                    }
+                    else
+                    {
+                        TempData["Error"] = "Some day(s) reserved please choose again";
+                        return RedirectToAction("Details", "Apartment", new { id = model.Reservation.ApartmentId });
+                    }
                 }
                 else
                 {
-                    TempData["Error"] = "Some day(s) reserved please choose again";
+                    TempData["Error"] = "You cannot exceed the accomodates limit";
                     return RedirectToAction("Details", "Apartment", new { id = model.Reservation.ApartmentId });
                 }
+
             }
             else
             {
@@ -102,9 +112,9 @@ namespace Hotel.Controllers
                     MailMessage mail = new MailMessage();
                     mail.From = new MailAddress("apartmentsbookingrio@gmail.com", "Rio Apartments");
                     mail.To.Add(model.Reservation.Email);
-                    mail.Body = "<p> Congratulations </p>";
+                    mail.Body = "<p> Your request sended. Please Wait. We will send feedback to you within 24 hours </p>";
                     mail.IsBodyHtml = true;
-                    mail.Subject = "Successfull Reservation";
+                    mail.Subject = "Reservation Request";
 
                     SmtpClient smtpClient = new SmtpClient();
                     smtpClient.Host = "smtp.gmail.com";
@@ -116,13 +126,13 @@ namespace Hotel.Controllers
 
                     CultureInfo provider = CultureInfo.InvariantCulture;
 
-                    
+                    TempData["Email"] = model.Reservation.Email;
                     model.Reservation.CreatedDate = DateTime.Now;
                     model.Reservation.Tax = 0.21 * model.Reservation.Amount;
                     model.Reservation.TotalAmount = model.Reservation.Amount + model.Reservation.Tax;
                     _context.Reservations.Add(model.Reservation);
                     _context.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Success");
                 }
                 else
                 {
@@ -166,9 +176,19 @@ namespace Hotel.Controllers
 
         }
 
+        public ActionResult Success()
+        {
+            if (TempData["Email"] != null)
+            {
+                return View();
+            }
+            return RedirectToAction("Error404", "Account", new { Area = "Admin" });
+        }
+
         public ActionResult GetReserves(int id)
         {
-            return Ok(Json(_context.Reservations.Where(a => a.ApartmentId == id)));
+            
+            return View(_context.Reservations.Where(r => r.ApartmentId == id).ToList());
         }
 
 

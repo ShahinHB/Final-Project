@@ -15,7 +15,7 @@
 
                 </div>
                 <div class="mb-3">
-                    <label asp-for="@Model.User.RoleId" class="form-label">Vəzifə</label>
+                    <label asp-for="@Model.User.RoleId" class="form-label">Role</label>
                     <select class="form-control" aria-label="Default select example" asp-for="@Model.User.RoleId" asp-items="@(new SelectList(ViewBag.Roles,"Id", "Name"))">
                         <option selected disabled>Select role</option>
                     </select>

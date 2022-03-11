@@ -9,6 +9,8 @@ using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using ClosedXML.Excel;
 using Microsoft.EntityFrameworkCore;
+using System.Net.Mail;
+using System.Net;
 
 namespace Hotel.Areas.Admin.Controllers
 {
@@ -48,6 +50,23 @@ namespace Hotel.Areas.Admin.Controllers
         {
             Reservation res = _context.Reservations.Find(id);
             res.IsActive = true;
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress("apartmentsbookingrio@gmail.com", "Rio Apartments");
+            mail.To.Add(res.Email);
+            mail.Body = "<p> Congratulations </p>";
+            mail.IsBodyHtml = true;
+            mail.Subject = "Successfull Reservation";
+
+
+            SmtpClient smtpClient = new SmtpClient();
+            smtpClient.Host = "smtp.gmail.com";
+            smtpClient.EnableSsl = true;
+            smtpClient.Port = 587;
+            smtpClient.Credentials = new NetworkCredential("apartmentsbookingrio@gmail.com", "adidas123456adidas");
+
+            smtpClient.Send(mail);
+
+
             _context.Reservations.Update(res);
             _context.SaveChanges();
             return RedirectToAction("Index");

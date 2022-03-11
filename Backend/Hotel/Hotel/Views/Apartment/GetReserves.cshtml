@@ -1,0 +1,11 @@
+﻿@model List<Reservation>
+@{
+    ViewData["Title"] = "GetReserves";
+    Layout = null;
+}
+
+@foreach (var item in Model)
+{
+    <p>@item.StartDate.ToString("dd/MM/yyyy") - @item.EndDate.ToString("dd/MM/yyyy") </p>
+}
+
