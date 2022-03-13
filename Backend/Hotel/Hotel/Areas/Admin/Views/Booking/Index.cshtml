@@ -11,11 +11,15 @@
         }
     }
 </style>
+@{ 
+    var waitingBooking = Model.Where(m => m.IsActive == false).ToList();
+    var confirmedBooking = Model.Where(m => m.IsActive == true).ToList();
+}
 <div class="row">
     <div class="col-md-12">
         <div class="card card-box">
             <div class="card-head">
-                <header>All Bookings</header>
+                <header>New Bookings</header>
                 <div class="tools">
                     <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
                     <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
@@ -36,7 +40,7 @@
                                         <i class="fa fa-print"></i> Print
                                     </a>
                                 </li>
-                                
+
                                 <li>
                                     <a asp-area="Admin" asp-controller="Booking" asp-action="DownloadToExcel">
                                         <i class="fa fa-file-excel-o"></i> Export to Excel
@@ -65,7 +69,7 @@
 
                             @{
                                 int i = 0;
-                                @foreach (var item in Model)
+                                @foreach (var item in waitingBooking)
                                 {
                                     i++;
                                     <tr class="odd gradeX">
@@ -88,14 +92,14 @@
                                             }
                                             else
                                             {
-                                                <a class="label label-sm label-warning"  asp-area="Admin" asp-controller="Booking" asp-action="Confirm" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">Wait </a>
+                                                <a class="label label-sm label-warning" asp-area="Admin" asp-controller="Booking" asp-action="Confirm" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">Wait </a>
                                             }
                                         </td>
                                         <td class="center">
                                             <a class="btn btn-tbl-edit btn-xs" asp-area="Admin" asp-controller="Booking" asp-action="Detail" asp-route-id="@item.Id">
                                                 <i class="fa fa-info" style="padding: 0px 3px"></i>
                                             </a>
-                                            <a class="btn btn-tbl-delete btn-xs"  asp-area="Admin" asp-controller="Booking" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">
+                                            <a class="btn btn-tbl-delete btn-xs" asp-area="Admin" asp-controller="Booking" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">
                                                 <i class="fa fa-trash-o "></i>
                                             </a>
                                         </td>
@@ -109,5 +113,102 @@
                 </div>
             </div>
         </div>
+        <div class="card card-box">
+            <div class="card-head">
+                <header>Confirmed Bookings</header>
+                <div class="tools">
+                    <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+                    <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
+                </div>
+            </div>
+            <div class="card-body ">
+                <div class="row p-b-20" style="display:flex; justify-content:right">
+                    <div class="col-md-6 col-sm-6 col-6">
+                        <div class="btn-group pull-right" id="myToolBar">
+                            <a class="btn deepPink-bgcolor  btn-outline dropdown-toggle"
+                               data-toggle="dropdown">
+                                Tools
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <li>
+                                    <a onclick="window.print()">
+                                        <i class="fa fa-print"></i> Print
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a asp-area="Admin" asp-controller="Booking" asp-action="DownloadToExcel">
+                                        <i class="fa fa-file-excel-o"></i> Export to Excel
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-scrollable">
+                    <table class="table table-hover table-checkable order-column full-width"
+                           id="example4">
+                        <thead>
+                            <tr>
+                                <th class="center">#</th>
+                                <th class="center"> Name </th>
+                                <th class="center"> Email </th>
+                                <th class="center"> Arrive </th>
+                                <th class="center"> Depart </th>
+                                <th class="center"> Apartment </th>
+                                <th class="center"> Status </th>
+                                <th class="center"> Action </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @{
+                                int j = 0;
+                                @foreach (var item in confirmedBooking)
+                                {
+                                    j++;
+                                    <tr class="odd gradeX">
+                                        <td class="center">@j</td>
+
+                                        <td class="center">@item.Name</td>
+
+                                        <td class="center">
+                                            <a href="mailto:shahinhb@code.edu.az">
+                                                @item.Email
+                                            </a>
+                                        </td>
+                                        <td class="center">@item.StartDate.ToString("dd/MM/yyyy")</td>
+                                        <td class="center">@item.EndDate.ToString("dd/MM/yyyy")</td>
+                                        <td class="center">@item.Apartment.Title (Id: @item.ApartmentId)</td>
+                                        <td class="center">
+                                            @if (item.IsActive)
+                                            {
+                                                <span class="label label-sm label-success">Confirmed </span>
+                                            }
+                                            else
+                                            {
+                                                <a class="label label-sm label-warning" asp-area="Admin" asp-controller="Booking" asp-action="Confirm" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">Wait </a>
+                                            }
+                                        </td>
+                                        <td class="center">
+                                            <a class="btn btn-tbl-edit btn-xs" asp-area="Admin" asp-controller="Booking" asp-action="Detail" asp-route-id="@item.Id">
+                                                <i class="fa fa-info" style="padding: 0px 3px"></i>
+                                            </a>
+                                            <a class="btn btn-tbl-delete btn-xs" asp-area="Admin" asp-controller="Booking" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">
+                                                <i class="fa fa-trash-o "></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                }
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>

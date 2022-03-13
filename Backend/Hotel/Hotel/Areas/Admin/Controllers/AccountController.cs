@@ -21,17 +21,20 @@ namespace Hotel.Areas.Admin.Controllers
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly UserManager<IdentityUser> _userManager;
 
-       
+
+
         public AccountController(AppDbContext context, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, RoleManager<IdentityRole> roleManager, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
             _signInManager = signInManager;
             _roleManager = roleManager;
             _webHostEnvironment = webHostEnvironment;
-
+            _userManager = userManager;
         }
 
+        [AllowAnonymous]
         public IActionResult AccessDenied()
         {
             return View();

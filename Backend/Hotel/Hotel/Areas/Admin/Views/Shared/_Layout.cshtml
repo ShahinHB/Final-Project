@@ -131,7 +131,14 @@
                                 <div class="user-panel">
                                     <div class="row">
                                         <div class="sidebar-userpic">
-                                            <img src="~/Uploads/@imageName" class="img-responsive" alt="">
+                                            @if ( imageName == null)
+                                            {
+                                                <img src="~/Areas/assets/img/avatar.png" alt="avatar" class="img-responsive">
+                                            }
+                                            else
+                                            {
+                                                <img src="~/Uploads/@imageName" class="img-responsive" alt="">
+                                            }
                                         </div>
                                     </div>
                                     <div class="profile-usertitle">
