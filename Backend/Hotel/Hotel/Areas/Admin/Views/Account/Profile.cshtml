@@ -44,7 +44,8 @@
                         <form asp-area="Admin" asp-controller="Account" asp-action="ProfilePhoto" method="post" enctype="multipart/form-data">
                             <input type="file" asp-for="@Model.ImageFile" />
                             <input type="hidden" asp-for="@Model.Id" />
-                            <button class="btn btn-primary" type="submit">Save</button>
+                            <button class="btn btn-primary d-block mb-3 mt-3" style="margin: 0 auto;" type="submit">Save</button>
+                            <a class="btn btn-info" asp-area="Admin" asp-controller="Account" asp-action="ChangePassword" asp-route-id="@Model.Id" >Change Password</a>
                         </form>
                         <style>
                             #ProfileUpdateButton {

@@ -216,3 +216,4 @@ C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.
 C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Views\Apartment\GetReserves.cshtml.g.cs
 C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Contact\ViewMessage.cshtml.g.cs
 C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Contact\OldMessages.cshtml.g.cs
+C:\Users\Shahin\Desktop\Final Project\Backend\Hotel\Hotel\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Account\ChangePassword.cshtml.g.cs

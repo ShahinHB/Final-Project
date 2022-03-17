@@ -106,5 +106,6 @@ namespace Hotel.Areas.Admin.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+
     }
 }
