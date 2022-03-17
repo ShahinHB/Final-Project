@@ -23,7 +23,7 @@ namespace Hotel.Areas.Admin.Controllers
         public IActionResult List()
         {
             VmAdminMessageList model = new VmAdminMessageList();
-            model.Messages = _context.Messages.ToList();
+            model.Messages = _context.Messages.Where(a=>a.IsReplied == false).ToList();
             return View(model);
         }
         public IActionResult Delete(int id)
@@ -38,11 +38,19 @@ namespace Hotel.Areas.Admin.Controllers
         {
             Message mes = _context.Messages.Find(id);
             mes.IsReplied = true;
-           
+
 
             _context.Messages.Update(mes);
             _context.SaveChanges();
             return RedirectToAction("List");
+        }
+        public IActionResult ViewMessage(int id)
+        {
+            return View(_context.Messages.Find(id));
+        }
+        public IActionResult OldMessages()
+        {
+            return View(_context.Messages.Where(a => a.IsReplied == true).ToList());
         }
     }
 }

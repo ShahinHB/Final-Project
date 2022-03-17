@@ -14,30 +14,6 @@
                 </div>
             </div>
             <div class="card-body ">
-                <div class="row p-b-20" style="display:flex; justify-content:right">
-                    <div class="col-md-6 col-sm-6 col-6">
-                        <div class="btn-group pull-right" id="myToolBar">
-                            <a class="btn deepPink-bgcolor  btn-outline dropdown-toggle"
-                               data-toggle="dropdown">
-                                Tools
-                                <i class="fa fa-angle-down"></i>
-                            </a>
-                            <ul class="dropdown-menu pull-right">
-                                <li>
-                                    <a onclick="window.print()">
-                                        <i class="fa fa-print"></i> Print
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a asp-area="Admin" asp-controller="Booking" asp-action="DownloadToExcel">
-                                        <i class="fa fa-file-excel-o"></i> Export to Excel
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
                 <div class="table-scrollable">
                     <table class="table table-hover table-checkable order-column full-width"
                            id="example4">
@@ -56,18 +32,18 @@
                                 @foreach (var item in Model)
                                 {
                                     i++;
-                            <tr class="odd gradeX">
-                                <th scope="row">@i</th>
-                                <td>@item.MailAddress</td>
-                                <td>
-                                </td>
-                                <td class="center">
+                                    <tr class="odd gradeX">
+                                        <th scope="row">@i</th>
+                                        <td>@item.MailAddress</td>
+                                        <td>
+                                        </td>
+                                        <td class="center">
 
-                                    <a class="btn btn-tbl-delete btn-xs" asp-area="Admin" asp-controller="Sub" asp-action="DeleteSub" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">
-                                        <i class="fa fa-trash-o "></i>
-                                    </a>
-                                </td>
-                            </tr>
+                                            <a class="btn btn-tbl-delete btn-xs" asp-area="Admin" asp-controller="Sub" asp-action="DeleteSub" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">
+                                                <i class="fa fa-trash-o "></i>
+                                            </a>
+                                        </td>
+                                    </tr>
 
                                 }
 

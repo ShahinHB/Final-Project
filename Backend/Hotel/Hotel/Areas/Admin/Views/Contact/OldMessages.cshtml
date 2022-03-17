@@ -1,0 +1,66 @@
+﻿@model List<Message>
+@{
+    ViewData["Title"] = "OldMessages";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card card-box">
+    <div class="card-head">
+        <header>Old Bookings</header>
+        <div class="tools">
+            <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+            <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
+        </div>
+    </div>
+    <div class="card-body ">
+        
+        <div class="table-scrollable">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Message</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ int i = 0;
+                        foreach (var item in Model)
+                        {
+                            i++;
+                            <tr>
+
+                                <th scope="row">@i</th>
+                                <td>@item.Name</td>
+                                <td>@item.Email</td>
+                                <td>
+                                    @if (item.IsReplied)
+                                    {
+                                        <span class="label label-sm label-success">Confirmed </span>
+                                    }
+                                    else
+                                    {
+                                        <a class="label label-sm label-warning" asp-area="Admin" asp-controller="Contact" asp-action="Confirm" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">Wait </a>
+                                    }
+                                </td>
+
+                                <td>
+                                    <a class="btn btn-info" asp-area="Admin" asp-controller="Contact" asp-action="ViewMessage" asp-route-id="@item.Id">View Message</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-danger" asp-area="Admin" asp-controller="Contact" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure?')">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
