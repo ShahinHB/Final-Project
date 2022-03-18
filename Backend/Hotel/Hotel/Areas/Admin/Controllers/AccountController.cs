@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,16 +23,17 @@ namespace Hotel.Areas.Admin.Controllers
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly ILogger<AccountController> _logger;
 
 
-
-        public AccountController(AppDbContext context, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, RoleManager<IdentityRole> roleManager, IWebHostEnvironment webHostEnvironment)
+        public AccountController(AppDbContext context, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, RoleManager<IdentityRole> roleManager, IWebHostEnvironment webHostEnvironment, ILogger<AccountController> logger)
         {
             _context = context;
             _signInManager = signInManager;
             _roleManager = roleManager;
             _webHostEnvironment = webHostEnvironment;
             _userManager = userManager;
+            _logger = logger;
         }
 
         [AllowAnonymous]
@@ -217,11 +219,59 @@ namespace Hotel.Areas.Admin.Controllers
 
                 // Upon successfully changing the password refresh sign-in cookie
                 await _signInManager.RefreshSignInAsync(user);
-                return View("ChangePasswordConfirmation");
+                //return View("ChangePasswordConfirmation");
+                return View("Profile");
             }
 
             return View(model);
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Find the user by email
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                // If the user is found AND Email is confirmed
+                if (user.Email != null && await _userManager.IsEmailConfirmedAsync(user))
+                {
+                    // Generate the reset password token
+                    var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+                    // Build the password reset link
+                    var passwordResetLink = Url.Action("ResetPassword", "Account",
+                            new { email = model.Email, token = token }, Request.Scheme);
+
+                    // Log the password reset link
+                    _logger.Log(LogLevel.Warning, passwordResetLink);
+
+                    // Send the user to Forgot Password Confirmation view
+                    TempData["Feedback"] = "Please check your email";
+                    return View("ForgotPasswordConfirmation");
+                }
+                else
+                {
+                    TempData["Feedback"] = "This email cannot exist";
+                }
+                // To avoid account enumeration and brute force attacks, don't
+                // reveal that the user does not exist or is not confirmed
+                return View("ForgotPasswordConfirmation");
+            }
+
+            return View(model);
+        }
+        public IActionResult ForgotPasswordConfirmation()
+        {
+            return View();
+        }
     }
 }

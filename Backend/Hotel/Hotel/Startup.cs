@@ -35,7 +35,7 @@ namespace Hotel
             services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
             services.Configure<CookieAuthenticationOptions>(options =>
             {
-                options.AccessDeniedPath = new PathString("/Admin/Account/AccessDenied");
+                options.AccessDeniedPath = new PathString("/Account/AccessDenied");
             });
             services.AddSession();
 
