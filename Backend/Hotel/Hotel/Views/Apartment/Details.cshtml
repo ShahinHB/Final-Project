@@ -90,12 +90,13 @@
                             <form asp-area="" asp-controller="Apartment" asp-action="CreateHelper" method="post">
                                 <input asp-for="@Model.Reservation.StartDate" type="text" class="datepicker" id="txtFromDate" autocomplete="off" required placeholder="Check In">
                                 <input asp-for="@Model.Reservation.EndDate" type="text" class="datepicker" autocomplete="off" id="txtToDate" required placeholder="Check Out">
-                                <input asp-for="@Model.Reservation.AdultsCount" min="0" max="@Model.Apartment.Limit" type="number" required>
-                                <input asp-for="@Model.Reservation.KidsCount" min="0" max="@Model.Apartment.Limit" type="number" required>
+                                <input asp-for="@Model.Reservation.AdultsCount" min="0" max="@Model.Apartment.Limit" type="number" required placeholder="Adults Count">
+                                <input asp-for="@Model.Reservation.KidsCount" min="0" max="@Model.Apartment.Limit" type="number" required placeholder="Kids Count">
                                 <input type="hidden" asp-for="@Model.Reservation.ApartmentId" value="@Model.Apartment.Id" />
                                 <input type="hidden" asp-for="@Model.Apartment.Id"/>
                                 <input type="hidden" asp-for="@Model.Apartment.Title" value="@Model.Apartment.Title" />
                                 <input type="hidden" asp-for="@Model.Apartment.Price" value="@Model.Apartment.Price" />
+                                <input type="hidden" asp-for="@Model.Apartment.Limit" />
                                 <p class="text-danger" style="font-size:14px">@TempData["Error"]</p>
                                 <button type="submit">Book Now</button>
                             </form>

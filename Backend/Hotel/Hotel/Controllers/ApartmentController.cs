@@ -57,7 +57,7 @@ namespace Hotel.Controllers
             bool check = true;
             if (model.Reservation.StartDate != null && model.Reservation.EndDate != null)
             {
-                if ((model.Reservation.KidsCount + model.Reservation.AdultsCount) > 0 && (model.Reservation.KidsCount + model.Reservation.AdultsCount < model.Apartment.Limit))
+                if ((model.Reservation.KidsCount + model.Reservation.AdultsCount) > 0 && (model.Reservation.KidsCount + model.Reservation.AdultsCount <= model.Apartment.Limit))
                 {
                     foreach (var b in _context.Reservations.Where(r => r.ApartmentId == model.Reservation.ApartmentId))
                     {
@@ -158,7 +158,7 @@ namespace Hotel.Controllers
 
         public IActionResult Checkout()
         {
-            if (TempData["AdultCount"] != null && TempData["EndDate"] != null && TempData["Apartment"] != null && ((int)TempData["KidsCount"] +  (int)TempData["AdultCount"]) > 1)
+            if (TempData["StartDate"] != null && TempData["EndDate"] != null)
             {
                 VmBooking model = new VmBooking
                 {
